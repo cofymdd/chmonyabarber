@@ -1,0 +1,26 @@
+{
+  "file_scan_exclusions": [
+    "**/.DS_Store",
+    "**/.git",
+    // "**/.github",
+    // "**/.gitignore",
+    // "**/.direnv",
+    // "**/.envrc",
+    // "**/bun.lock",
+    // "**/flake.lock",
+    // "**/.oxfmtrc.json",
+    // "**/.oxlintrc.json",
+    // "**/node_modules",
+  ],
+  "languages": {
+    "Nix": {
+      "language_servers": ["nixd", "wakatime"],
+      "formatter": {
+        "external": {
+          "command": "nixfmt",
+          "arguments": ["--quiet", "--strict", "--indent=3", "--"],
+        },
+      },
+    },
+  },
+}
