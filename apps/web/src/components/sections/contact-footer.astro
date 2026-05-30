@@ -1,0 +1,186 @@
+---
+import { MapPinIcon, PhoneIcon } from "lucide-react"
+
+import ResponsiveImage from "@/components/responsive-image.astro"
+import {
+  bookingLinks,
+  contact,
+  instagramImages,
+  socialLinks,
+} from "@/lib/infinity-content"
+import { buttonVariants } from "@workspace/ui/components/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card"
+---
+
+<footer id="kontakt" class="bg-foreground text-background scroll-mt-24">
+  <div
+    class="mx-auto grid w-full max-w-[1440px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-24"
+  >
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-3">
+        <p class="text-background/60 text-sm font-medium uppercase">
+          Kontakt / Rezervácia
+        </p>
+        <h2 class="text-5xl leading-none font-medium sm:text-8xl">Kontakt</h2>
+      </div>
+      <p class="text-background/70 max-w-2xl text-lg leading-8 text-pretty">
+        Rezervovať termín si môžete na našom telefónnom čísle, formou správy na
+        našich sociálnych sieťach alebo e-mailom.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={bookingLinks.phone}
+          class={buttonVariants({ size: "lg", variant: "secondary" })}
+          data-slot="button"
+          data-size="lg"
+          data-variant="secondary"
+        >
+          <PhoneIcon data-icon="inline-start" />
+          Zavolať
+        </a>
+        <a
+          href={contact.maps}
+          class={buttonVariants({ size: "lg", variant: "outline" })}
+          data-slot="button"
+          data-size="lg"
+          data-variant="outline"
+        >
+          <MapPinIcon data-icon="inline-start" />
+          Kde?
+        </a>
+      </div>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      <Card
+        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
+        size="sm"
+      >
+        <CardHeader>
+          <CardDescription className="text-background/60"
+            >Eperia</CardDescription
+          >
+          <CardTitle className="text-background text-2xl">
+            <a
+              href={contact.maps}
+              class="focus-visible:ring-background/30 hover:underline focus-visible:ring-3 focus-visible:outline-none"
+            >
+              {contact.address}
+            </a>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p class="text-background/70">{contact.hours}</p>
+        </CardContent>
+      </Card>
+
+      <Card
+        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
+        size="sm"
+      >
+        <CardHeader>
+          <CardDescription className="text-background/60">
+            Objednaj sa
+          </CardDescription>
+          <CardTitle className="text-background text-2xl">
+            <a
+              href={bookingLinks.phone}
+              class="focus-visible:ring-background/30 hover:underline focus-visible:ring-3 focus-visible:outline-none"
+            >
+              {contact.phone}
+            </a>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <a
+            href={bookingLinks.email}
+            class="text-background/70 focus-visible:ring-background/30 break-words hover:underline focus-visible:ring-3 focus-visible:outline-none"
+          >
+            {contact.email}
+          </a>
+        </CardContent>
+      </Card>
+
+      <Card
+        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
+        size="sm"
+      >
+        <CardHeader>
+          <CardDescription className="text-background/60">
+            Sociálne siete
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                class="focus-visible:ring-background/30 text-xl font-medium hover:underline focus-visible:ring-3 focus-visible:outline-none"
+              >
+                Sledujte nás na {link.label}
+              </a>
+            ))
+          }
+        </CardContent>
+      </Card>
+
+      <Card
+        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
+        size="sm"
+      >
+        <CardHeader>
+          <CardDescription className="text-background/60">
+            Fakturačné údaje
+          </CardDescription>
+          <CardTitle className="text-background text-xl"
+            >{contact.company}</CardTitle
+          >
+        </CardHeader>
+        <CardContent>
+          <p class="text-background/70">{contact.billing}</p>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+
+  <div
+    class="border-background/20 mx-auto flex w-full max-w-[1440px] flex-col gap-5 border-t px-5 py-8 sm:px-8 lg:px-10"
+  >
+    <div class="flex items-center justify-between gap-5">
+      <p class="text-background/60 text-sm font-medium">
+        INFINITY BARBER / Čo sa u nás deje
+      </p>
+      <a
+        href={bookingLinks.instagram}
+        class="focus-visible:ring-background/30 text-sm font-medium hover:underline focus-visible:ring-3 focus-visible:outline-none"
+      >
+        Instagram
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
+      {
+        instagramImages.map((image, index) => (
+          <a
+            href={bookingLinks.instagram}
+            aria-label={`Instagram ${index + 1}`}
+            class="focus-visible:ring-background/30 rounded-md focus-visible:ring-3 focus-visible:outline-none"
+          >
+            <ResponsiveImage
+              src={image}
+              alt="Infinity Barber Instagram"
+              ratio={1}
+              className="h-full w-full rounded-md object-cover grayscale transition-[filter] duration-500 hover:grayscale-0"
+              sizes="(min-width: 1024px) 12vw, (min-width: 640px) 25vw, 50vw"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</footer>

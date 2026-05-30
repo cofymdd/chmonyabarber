@@ -1,0 +1,61 @@
+---
+import { AspectRatio } from "@workspace/ui/components/aspect-ratio"
+
+import { imageDimensions } from "@/lib/infinity-images"
+
+interface Props {
+  alt: string
+  className?: string
+  decoding?: "async" | "auto" | "sync"
+  fetchpriority?: "high" | "low" | "auto"
+  loading?: "eager" | "lazy"
+  ratio?: number
+  sizes?: string
+  src: string
+  wrapperClassName?: string
+}
+
+const {
+  alt,
+  className = "h-full w-full object-cover",
+  decoding = "async",
+  fetchpriority,
+  loading = "lazy",
+  ratio,
+  sizes,
+  src,
+  wrapperClassName,
+} = Astro.props
+
+const dimensions = imageDimensions[src]
+---
+
+{
+  ratio ? (
+    <AspectRatio className={wrapperClassName} ratio={ratio}>
+      <img
+        alt={alt}
+        class={className}
+        decoding={decoding}
+        fetchpriority={fetchpriority}
+        height={dimensions?.height}
+        loading={loading}
+        sizes={sizes}
+        src={src}
+        width={dimensions?.width}
+      />
+    </AspectRatio>
+  ) : (
+    <img
+      alt={alt}
+      class={className}
+      decoding={decoding}
+      fetchpriority={fetchpriority}
+      height={dimensions?.height}
+      loading={loading}
+      sizes={sizes}
+      src={src}
+      width={dimensions?.width}
+    />
+  )
+}

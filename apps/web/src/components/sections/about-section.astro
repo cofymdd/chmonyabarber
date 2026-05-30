@@ -1,0 +1,36 @@
+---
+import ReservationButton from "@/components/reservation-button.astro"
+import ResponsiveImage from "@/components/responsive-image.astro"
+import SectionEyebrow from "@/components/section-eyebrow.astro"
+import { assets } from "@/lib/infinity-content"
+---
+
+<section
+  id="o-nas"
+  class="mx-auto grid w-full max-w-[1440px] scroll-mt-24 gap-8 border-b px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-24"
+>
+  <ResponsiveImage
+    src={assets.about}
+    alt="Nožnice v barbershope"
+    ratio={4 / 5}
+    className="h-full w-full rounded-md object-cover grayscale"
+    sizes="(min-width: 1024px) 36vw, calc(100vw - 2.5rem)"
+  />
+
+  <div class="flex flex-col justify-center gap-8">
+    <SectionEyebrow>INFINITY BARBER / O nás</SectionEyebrow>
+    <h2
+      class="text-3xl leading-tight font-medium text-balance break-words sm:text-6xl"
+    >
+      Kreslo, uvoľnená atmosféra a náš šikovný barber. Kombinácia, vďaka ktorej
+      vyzeráš dobre a cítiš sa ešte lepšie.
+    </h2>
+    <div class="grid gap-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+      <p class="text-muted-foreground text-base leading-7 text-pretty">
+        Rezervácia ti zabezpečí pripravené kreslo, aby tvoj štýl ožil presne v
+        ten správny čas.
+      </p>
+      <ReservationButton />
+    </div>
+  </div>
+</section>

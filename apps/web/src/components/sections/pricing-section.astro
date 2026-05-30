@@ -1,0 +1,59 @@
+---
+import SectionEyebrow from "@/components/section-eyebrow.astro"
+import { priceGroups, serviceTags } from "@/lib/infinity-content"
+import { Badge } from "@workspace/ui/components/badge"
+import { Separator } from "@workspace/ui/components/separator"
+---
+
+<section
+  id="sluzby"
+  class="mx-auto grid w-full max-w-[1440px] scroll-mt-24 gap-10 border-b px-5 py-16 sm:px-8 lg:grid-cols-[0.65fr_1.35fr] lg:px-10 lg:py-24"
+>
+  <div class="flex flex-col gap-5">
+    <SectionEyebrow>INFINITY BARBER / Naše služby</SectionEyebrow>
+    <div class="flex items-end gap-4">
+      <h2 class="text-6xl leading-none font-medium sm:text-8xl">Cenník</h2>
+      <p class="text-muted-foreground pb-2 text-2xl">(12)</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {
+        serviceTags.map((tag) => (
+          <Badge variant="secondary" className="rounded-md">
+            {tag}
+          </Badge>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-8">
+    {
+      priceGroups.map((group) => (
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-4">
+            <p class="text-muted-foreground text-sm font-semibold">
+              {group.label}
+            </p>
+            <Separator />
+          </div>
+          <div class="flex flex-col border-t">
+            {group.items.map((item) => (
+              <div class="grid gap-4 border-b py-5 sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:items-start">
+                <p class="text-muted-foreground text-sm">{item.number}</p>
+                <div class="flex min-w-0 flex-col gap-1">
+                  <h3 class="text-lg font-medium text-pretty">{item.name}</h3>
+                  <p class="text-muted-foreground text-sm leading-6 text-pretty">
+                    {item.description}
+                  </p>
+                </div>
+                <p class="text-xl font-semibold whitespace-nowrap">
+                  {item.price}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import { FaqAccordion } from "@/components/faq-accordion"
+import ResponsiveImage from "@/components/responsive-image.astro"
+import SectionEyebrow from "@/components/section-eyebrow.astro"
+import { assets, faqItems } from "@/lib/infinity-content"
+---
+
+<section
+  class="mx-auto grid w-full max-w-[1440px] gap-8 border-b px-5 py-16 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:px-10 lg:py-24"
+>
+  <div class="flex flex-col gap-5">
+    <SectionEyebrow>INFINITY BARBER / Najčastejšie otázky</SectionEyebrow>
+    <h2 class="text-5xl leading-none font-medium break-words sm:text-7xl">
+      FAQ.
+    </h2>
+    <ResponsiveImage
+      src={assets.faq}
+      alt="Naši barberi"
+      ratio={4 / 5}
+      className="h-full w-full rounded-md object-cover grayscale"
+      sizes="(min-width: 1024px) 34vw, calc(100vw - 2.5rem)"
+    />
+  </div>
+  <div class="flex flex-col justify-center gap-6">
+    <h3
+      class="max-w-2xl text-3xl leading-tight font-medium text-balance break-words sm:text-5xl"
+    >
+      Otázky vítané, od typu nožníc až po náš kávový rituál. Pýtajte sa.
+    </h3>
+    <FaqAccordion client:visible={{ rootMargin: "200px" }} items={faqItems} />
+  </div>
+</section>

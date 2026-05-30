@@ -13,9 +13,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@workspace/ui/components/dialog"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@workspace/ui/components/field"
 import { Switch } from "@workspace/ui/components/switch"
 
 const STORAGE_KEY = "infinity-cookie-settings"
+const STORAGE_VERSION = 1
 
 type CookieState = {
   analytics: boolean
@@ -27,26 +35,70 @@ const defaultState: CookieState = {
   marketing: false,
 }
 
-export function CookieSettings() {
-  const [open, setOpen] = React.useState(false)
-  const [settings, setSettings] = React.useState<CookieState>(defaultState)
+const cookieFields = [
+  {
+    description: "Pomáhajú nám pochopiť, ktoré časti stránky sú užitočné.",
+    id: "analytics-cookies",
+    key: "analytics",
+    label: "Analytické cookies",
+  },
+  {
+    description: "Súvisia so sociálnymi sieťami a meraním kampaní.",
+    id: "marketing-cookies",
+    key: "marketing",
+    label: "Marketingové cookies",
+  },
+] as const
 
-  React.useEffect(() => {
+function readSettings(): CookieState {
+  try {
     const saved = window.localStorage.getItem(STORAGE_KEY)
 
     if (!saved) {
-      return
+      return defaultState
     }
 
-    try {
-      setSettings(JSON.parse(saved) as CookieState)
-    } catch {
-      setSettings(defaultState)
+    const parsed = JSON.parse(saved) as Partial<CookieState> & {
+      version?: number
     }
-  }, [])
+
+    if (
+      parsed.version !== STORAGE_VERSION ||
+      typeof parsed.analytics !== "boolean" ||
+      typeof parsed.marketing !== "boolean"
+    ) {
+      return defaultState
+    }
+
+    return {
+      analytics: parsed.analytics,
+      marketing: parsed.marketing,
+    }
+  } catch {
+    return defaultState
+  }
+}
+
+export function CookieSettings() {
+  const [open, setOpen] = React.useState(false)
+  const [settings, setSettings] = React.useState<CookieState>(() => {
+    if (typeof window === "undefined") {
+      return defaultState
+    }
+
+    return readSettings()
+  })
 
   function save(nextSettings = settings) {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextSettings))
+    try {
+      window.localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ ...nextSettings, version: STORAGE_VERSION })
+      )
+    } catch {
+      // Keeping the dialog usable is more important than persistence.
+    }
+
     setSettings(nextSettings)
     setOpen(false)
   }
@@ -63,55 +115,45 @@ export function CookieSettings() {
           Nastavenia cookies
         </Button>
       </DialogTrigger>
-      <DialogContent className="rounded-md border bg-background sm:max-w-lg">
+      <DialogContent className="bg-background rounded-md border sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
             <CookieIcon />
             Cookies
           </DialogTitle>
           <DialogDescription>
-            Používame iba nastavenia potrebné pre pohodlnú prevádzku webu.
-            Voľby si vieš uložiť v tomto prehliadači.
+            Používame iba nastavenia potrebné pre pohodlnú prevádzku webu. Voľby
+            si vieš uložiť v tomto prehliadači.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center justify-between gap-4 rounded-md border p-4">
-            <div className="flex flex-col gap-1">
-              <label htmlFor="analytics-cookies" className="font-medium">
-                Analytické cookies
-              </label>
-              <p className="text-sm text-muted-foreground">
-                Pomáhajú nám pochopiť, ktoré časti stránky sú užitočné.
-              </p>
-            </div>
-            <Switch
-              id="analytics-cookies"
-              checked={settings.analytics}
-              onCheckedChange={(analytics) =>
-                setSettings((current) => ({ ...current, analytics }))
-              }
-            />
-          </div>
-
-          <div className="flex items-center justify-between gap-4 rounded-md border p-4">
-            <div className="flex flex-col gap-1">
-              <label htmlFor="marketing-cookies" className="font-medium">
-                Marketingové cookies
-              </label>
-              <p className="text-sm text-muted-foreground">
-                Súvisia so sociálnymi sieťami a meraním kampaní.
-              </p>
-            </div>
-            <Switch
-              id="marketing-cookies"
-              checked={settings.marketing}
-              onCheckedChange={(marketing) =>
-                setSettings((current) => ({ ...current, marketing }))
-              }
-            />
-          </div>
-        </div>
+        <FieldGroup className="gap-4">
+          {cookieFields.map((field) => (
+            <Field
+              key={field.id}
+              orientation="horizontal"
+              className="justify-between rounded-md border p-4"
+            >
+              <FieldContent>
+                <FieldLabel htmlFor={field.id}>{field.label}</FieldLabel>
+                <FieldDescription id={`${field.id}-description`}>
+                  {field.description}
+                </FieldDescription>
+              </FieldContent>
+              <Switch
+                id={field.id}
+                aria-describedby={`${field.id}-description`}
+                checked={settings[field.key]}
+                onCheckedChange={(checked) =>
+                  setSettings((current) => ({
+                    ...current,
+                    [field.key]: checked,
+                  }))
+                }
+              />
+            </Field>
+          ))}
+        </FieldGroup>
 
         <DialogFooter>
           <Button variant="outline" onClick={() => save(defaultState)}>

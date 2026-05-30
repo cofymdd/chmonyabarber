@@ -32,20 +32,27 @@ export const contact = {
   address: "OC Eperia, 1. poschodie, pri foodcourte",
   company: "Infinity Company s. r. o.",
   billing: "IČO: 56525915, DIČ: 2122339780, Budovateľská 698/10, 086 33 Zborov",
-  maps:
-    "https://www.google.com/maps/place/EPERIA+Shopping+Mall/@48.9888737,21.2606642,17z/data=!4m6!3m5!1s0x473eed0cde53953f:0xb9298f14766e21a1!8m2!3d48.9889195!4d21.2626222!16s%2Fg%2F11f_z8r59k",
+  maps: "https://www.google.com/maps/place/EPERIA+Shopping+Mall/@48.9888737,21.2606642,17z/data=!4m6!3m5!1s0x473eed0cde53953f:0xb9298f14766e21a1!8m2!3d48.9889195!4d21.2626222!16s%2Fg%2F11f_z8r59k",
+}
+
+export const bookingLinks = {
+  phone: `tel:${contact.phone.replace(/\s/g, "")}`,
+  email: `mailto:${contact.email}`,
+  instagram: "https://www.instagram.com/infinity_barber_presov/",
 }
 
 export const socialLinks = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/infinitybarber_sk/",
+    href: bookingLinks.instagram,
   },
   {
     label: "Facebook",
     href: "https://www.facebook.com/infinitybarberpresov",
   },
 ]
+
+export const serviceTags = ["Umytie", "Holenie", "Styling", "Strih"]
 
 export const styleCards = [
   {

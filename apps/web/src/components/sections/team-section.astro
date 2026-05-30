@@ -1,0 +1,54 @@
+---
+import ResponsiveImage from "@/components/responsive-image.astro"
+import SectionEyebrow from "@/components/section-eyebrow.astro"
+import { assets, barbers } from "@/lib/infinity-content"
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card"
+---
+
+<section
+  class="mx-auto w-full max-w-[1440px] border-b px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+>
+  <div class="grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
+    <div class="flex flex-col gap-6">
+      <SectionEyebrow>INFINITY BARBER / Náš tím</SectionEyebrow>
+      <h2 class="text-5xl leading-none font-medium break-words sm:text-8xl">
+        Barberi.
+      </h2>
+      <ResponsiveImage
+        src={assets.team}
+        alt="Infinity Barber tím"
+        className="w-full rounded-md border object-cover grayscale"
+        sizes="(min-width: 1024px) 31vw, calc(100vw - 2.5rem)"
+      />
+      <div class="text-muted-foreground grid grid-cols-2 gap-2 text-sm">
+        <span>Skúsenosti</span>
+        <span>Spoľahlivosť</span>
+        <span>Profesionalita</span>
+        <span>Priateľskí</span>
+      </div>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      {
+        barbers.map((barber) => (
+          <Card className="rounded-md border bg-card" size="sm">
+            <CardHeader>
+              <CardTitle>{barber.name}</CardTitle>
+              <CardDescription>"{barber.quote}"</CardDescription>
+            </CardHeader>
+            <CardFooter className="justify-between border-t text-sm text-muted-foreground">
+              <span>{barber.role}</span>
+              <span>({barber.nick})</span>
+            </CardFooter>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

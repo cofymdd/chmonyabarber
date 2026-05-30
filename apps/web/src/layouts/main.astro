@@ -17,7 +17,8 @@ const {
 <html lang={lang} class="dark scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171717" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
@@ -30,7 +31,7 @@ const {
     <meta name="twitter:image" content="/infinity/shop.jpg" />
     <title>{title}</title>
   </head>
-  <body class="min-h-svh bg-background text-foreground antialiased">
+  <body class="bg-background text-foreground min-h-svh antialiased">
     <slot />
   </body>
 </html>

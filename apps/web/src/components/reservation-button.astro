@@ -1,0 +1,30 @@
+---
+import { ArrowUpRightIcon } from "lucide-react"
+
+import { buttonVariants } from "@workspace/ui/components/button"
+
+interface Props {
+  className?: string
+  href?: string
+  label?: string
+  variant?: "default" | "outline" | "secondary" | "ghost" | "link"
+}
+
+const {
+  className,
+  href = "#kontakt",
+  label = "Rezervácia",
+  variant = "default",
+} = Astro.props
+---
+
+<a
+  href={href}
+  class={buttonVariants({ className, size: "lg", variant })}
+  data-slot="button"
+  data-size="lg"
+  data-variant={variant}
+>
+  {label}
+  <ArrowUpRightIcon data-icon="inline-end" />
+</a>

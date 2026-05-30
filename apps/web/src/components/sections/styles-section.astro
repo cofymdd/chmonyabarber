@@ -1,0 +1,66 @@
+---
+import ResponsiveImage from "@/components/responsive-image.astro"
+import SectionEyebrow from "@/components/section-eyebrow.astro"
+import { styleCards } from "@/lib/infinity-content"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card"
+---
+
+<section
+  class="mx-auto w-full max-w-[1440px] border-b px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+      <div class="flex flex-col gap-3">
+        <SectionEyebrow>INFINITY BARBER / Strihy a styling</SectionEyebrow>
+        <h2
+          class="text-4xl leading-tight font-medium text-balance break-words sm:text-7xl sm:leading-none"
+        >
+          Trendy / Klasika /
+        </h2>
+      </div>
+      <p class="text-muted-foreground max-w-xl text-base leading-7 text-pretty">
+        Malí, veľkí, mladí či starší, každý si zaslúži strih, ktorý mu sedí.
+        Vďaka našim skúsenostiam vieme, ako to urobiť správne.
+      </p>
+    </div>
+
+    <div class="grid gap-4 lg:grid-cols-5">
+      {
+        styleCards.map((style) => (
+          <Card className="rounded-md border bg-card/70" size="sm">
+            <CardHeader>
+              <CardTitle className="flex items-start justify-between gap-4">
+                <span>{style.title}</span>
+                <span class="text-muted-foreground text-sm">
+                  ({style.number})
+                </span>
+              </CardTitle>
+              <CardDescription>{style.description}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-3">
+              <ResponsiveImage
+                src={style.images[0]}
+                alt={style.title}
+                ratio={4 / 5}
+                className="h-full w-full rounded-md object-cover grayscale transition-[filter] duration-500 hover:grayscale-0"
+                sizes="(min-width: 1024px) 18vw, (min-width: 640px) 45vw, calc(100vw - 2.5rem)"
+              />
+              <ResponsiveImage
+                src={style.images[1]}
+                alt={style.description}
+                className="h-28 w-full rounded-md object-cover grayscale"
+                sizes="(min-width: 1024px) 18vw, (min-width: 640px) 45vw, calc(100vw - 2.5rem)"
+              />
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

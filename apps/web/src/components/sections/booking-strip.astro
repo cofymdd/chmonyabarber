@@ -1,0 +1,44 @@
+---
+import { CameraIcon } from "lucide-react"
+
+import ReservationButton from "@/components/reservation-button.astro"
+import { bookingLinks } from "@/lib/infinity-content"
+---
+
+<section
+  class="mx-auto grid w-full max-w-[1440px] gap-8 border-b px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-24"
+>
+  <a
+    href={bookingLinks.instagram}
+    class="hover:bg-muted focus-visible:ring-ring/30 flex h-fit items-center justify-between gap-5 rounded-md border p-5 transition-colors focus-visible:ring-3 focus-visible:outline-none"
+  >
+    <div class="flex min-w-0 flex-col gap-1">
+      <p class="text-muted-foreground text-xs font-medium" translate="no">
+        INFINITY BARBER
+      </p>
+      <p class="text-lg font-medium text-pretty">
+        na objednávky aj na počkanie
+      </p>
+      <p class="text-muted-foreground text-sm">PREŠOV, EPERIA</p>
+    </div>
+    <CameraIcon className="size-5 shrink-0" />
+  </a>
+
+  <div class="flex flex-col gap-8">
+    <h2
+      class="max-w-4xl text-3xl leading-tight font-medium text-balance break-words sm:text-6xl sm:leading-none"
+    >
+      Pohľad do zrkadla po čerstvom strihu stojí za to. Daj nám vedieť, kedy to
+      chceš zažiť.
+    </h2>
+    <div class="grid gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
+      <ReservationButton variant="outline" />
+      <p
+        class="text-muted-foreground max-w-2xl text-base leading-7 text-pretty"
+      >
+        Profesionálna starostlivosť, príjemná atmosféra a výsledok, s ktorým
+        odídeš spokojný. Dopraj si čas pre seba.
+      </p>
+    </div>
+  </div>
+</section>
