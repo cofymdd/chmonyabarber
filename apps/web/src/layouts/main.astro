@@ -1,15 +1,36 @@
 ---
 import "@workspace/ui/globals.css"
+
+interface Props {
+  title?: string
+  description?: string
+  lang?: string
+}
+
+const {
+  title = "INFINITY BARBER",
+  description = "Infinity Barber v OC Eperia, Presov.",
+  lang = "sk",
+} = Astro.props
 ---
 
-<html lang="en">
+<html lang={lang} class="dark scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Astro App</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/infinity/shop.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/infinity/shop.jpg" />
+    <title>{title}</title>
   </head>
-  <body>
+  <body class="min-h-svh bg-background text-foreground antialiased">
     <slot />
   </body>
 </html>
