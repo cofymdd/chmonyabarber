@@ -40,24 +40,31 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
   class="bg-background text-foreground min-h-svh scroll-mt-[90px] overflow-hidden"
 >
   <div class="pt-28 pb-20 sm:pt-32 sm:pb-20">
-    <div class="infinity-marquee-track flex items-start gap-2.5">
-      {
-        marqueeItems.map((image, index) => (
-          <a
-            href={bookingLinks.instagram}
-            aria-label={`Infinity Barber Instagram ${index + 1}`}
-            class={`block shrink-0 overflow-hidden ${image.className}`}
-          >
-            <ResponsiveImage
-              src={image.src}
-              alt="Infinity Barber Instagram"
-              className="h-full w-full object-cover"
-              sizes="190px"
-            />
-          </a>
-        ))
-      }
-    </div>
+    <a
+      href={bookingLinks.instagram}
+      aria-label="Infinity Barber na Instagrame"
+      class="focus-visible:ring-ring/30 block focus-visible:ring-3 focus-visible:outline-none"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <div
+        aria-hidden="true"
+        class="infinity-marquee-track flex items-start gap-2.5"
+      >
+        {
+          marqueeItems.map((image) => (
+            <span class={`block shrink-0 overflow-hidden ${image.className}`}>
+              <ResponsiveImage
+                src={image.src}
+                alt=""
+                className="h-full w-full object-cover"
+                sizes="190px"
+              />
+            </span>
+          ))
+        }
+      </div>
+    </a>
   </div>
 
   <div class="mx-auto w-full max-w-[1480px] px-6 sm:px-8 lg:px-6">
@@ -80,7 +87,7 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
         </div>
 
         <CookieSettings
-          client:idle={{ timeout: 1500 }}
+          client:visible
           floating={false}
           triggerClassName="h-auto self-start border-0 bg-transparent p-0 text-sm font-semibold leading-[17px] text-muted-foreground shadow-none hover:bg-transparent hover:text-foreground"
           triggerLabel="Nastavenia cookies"
@@ -94,7 +101,7 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
             socialLinks.map((link, index) => (
               <RollingLink
                 href={link.href}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
                 text={`${link.label}${index < socialLinks.length - 1 ? ", " : ""}`}
               />
@@ -124,7 +131,7 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
     data-slot="button"
     data-size="icon"
     data-variant="secondary"
-    rel="noreferrer"
+    rel="noopener noreferrer"
     target="_blank"
   >
     <CameraIcon />
