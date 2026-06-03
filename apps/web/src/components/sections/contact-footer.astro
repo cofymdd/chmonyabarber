@@ -1,7 +1,9 @@
 ---
-import { MapPinIcon, PhoneIcon } from "lucide-react"
+import { CameraIcon } from "lucide-react"
 
+import { CookieSettings } from "@/components/cookie-settings"
 import ResponsiveImage from "@/components/responsive-image.astro"
+import { RollingLink } from "@/components/rolling-link"
 import {
   bookingLinks,
   contact,
@@ -9,178 +11,122 @@ import {
   socialLinks,
 } from "@/lib/infinity-content"
 import { buttonVariants } from "@workspace/ui/components/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card"
+import { Separator } from "@workspace/ui/components/separator"
+
+const footerNavItems = [
+  { label: "Úvod", href: "#uvod" },
+  { label: "Služby", href: "#sluzby" },
+  { label: "O nás", href: "#o-nas" },
+  { label: "Kontakt", href: "#kontakt" },
+]
+
+const railItems = [
+  { src: instagramImages[0], className: "h-[193px] w-[132px]" },
+  { src: instagramImages[1], className: "h-[110px] w-[154px]" },
+  { src: instagramImages[2], className: "h-[193px] w-[150px]" },
+  { src: instagramImages[3], className: "h-[245px] w-[165px]" },
+  { src: instagramImages[4], className: "h-[110px] w-[154px]" },
+  { src: instagramImages[5], className: "h-[193px] w-[132px]" },
+  { src: instagramImages[6], className: "h-[136px] w-[190px]" },
+  { src: instagramImages[7], className: "h-[193px] w-[190px]" },
+]
+
+const marqueeItems = [...railItems, ...railItems, ...railItems, ...railItems]
+const phoneDisplay = contact.phone.replace("+421 ", "0")
 ---
 
-<footer id="kontakt" class="bg-foreground text-background scroll-mt-24">
-  <div
-    class="mx-auto grid w-full max-w-[1440px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-24"
-  >
-    <div class="flex flex-col gap-8">
-      <div class="flex flex-col gap-3">
-        <p class="text-background/60 text-sm font-medium uppercase">
-          Kontakt / Rezervácia
-        </p>
-        <h2 class="text-5xl leading-none font-medium sm:text-8xl">Kontakt</h2>
-      </div>
-      <p class="text-background/70 max-w-2xl text-lg leading-8 text-pretty">
-        Rezervovať termín si môžete na našom telefónnom čísle, formou správy na
-        našich sociálnych sieťach alebo e-mailom.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a
-          href={bookingLinks.phone}
-          class={buttonVariants({ size: "lg", variant: "secondary" })}
-          data-slot="button"
-          data-size="lg"
-          data-variant="secondary"
-        >
-          <PhoneIcon data-icon="inline-start" />
-          Zavolať
-        </a>
-        <a
-          href={contact.maps}
-          class={buttonVariants({ size: "lg", variant: "outline" })}
-          data-slot="button"
-          data-size="lg"
-          data-variant="outline"
-        >
-          <MapPinIcon data-icon="inline-start" />
-          Kde?
-        </a>
-      </div>
-    </div>
-
-    <div class="grid gap-5 md:grid-cols-2">
-      <Card
-        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
-        size="sm"
-      >
-        <CardHeader>
-          <CardDescription className="text-background/60"
-            >Eperia</CardDescription
-          >
-          <CardTitle className="text-background text-2xl">
-            <a
-              href={contact.maps}
-              class="focus-visible:ring-background/30 hover:underline focus-visible:ring-3 focus-visible:outline-none"
-            >
-              {contact.address}
-            </a>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p class="text-background/70">{contact.hours}</p>
-        </CardContent>
-      </Card>
-
-      <Card
-        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
-        size="sm"
-      >
-        <CardHeader>
-          <CardDescription className="text-background/60">
-            Objednaj sa
-          </CardDescription>
-          <CardTitle className="text-background text-2xl">
-            <a
-              href={bookingLinks.phone}
-              class="focus-visible:ring-background/30 hover:underline focus-visible:ring-3 focus-visible:outline-none"
-            >
-              {contact.phone}
-            </a>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <a
-            href={bookingLinks.email}
-            class="text-background/70 focus-visible:ring-background/30 break-words hover:underline focus-visible:ring-3 focus-visible:outline-none"
-          >
-            {contact.email}
-          </a>
-        </CardContent>
-      </Card>
-
-      <Card
-        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
-        size="sm"
-      >
-        <CardHeader>
-          <CardDescription className="text-background/60">
-            Sociálne siete
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          {
-            socialLinks.map((link) => (
-              <a
-                href={link.href}
-                class="focus-visible:ring-background/30 text-xl font-medium hover:underline focus-visible:ring-3 focus-visible:outline-none"
-              >
-                Sledujte nás na {link.label}
-              </a>
-            ))
-          }
-        </CardContent>
-      </Card>
-
-      <Card
-        className="border-background/20 text-background rounded-md border bg-transparent shadow-none ring-0"
-        size="sm"
-      >
-        <CardHeader>
-          <CardDescription className="text-background/60">
-            Fakturačné údaje
-          </CardDescription>
-          <CardTitle className="text-background text-xl"
-            >{contact.company}</CardTitle
-          >
-        </CardHeader>
-        <CardContent>
-          <p class="text-background/70">{contact.billing}</p>
-        </CardContent>
-      </Card>
-    </div>
-  </div>
-
-  <div
-    class="border-background/20 mx-auto flex w-full max-w-[1440px] flex-col gap-5 border-t px-5 py-8 sm:px-8 lg:px-10"
-  >
-    <div class="flex items-center justify-between gap-5">
-      <p class="text-background/60 text-sm font-medium">
-        INFINITY BARBER / Čo sa u nás deje
-      </p>
-      <a
-        href={bookingLinks.instagram}
-        class="focus-visible:ring-background/30 text-sm font-medium hover:underline focus-visible:ring-3 focus-visible:outline-none"
-      >
-        Instagram
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
+<footer
+  id="kontakt"
+  class="bg-background text-foreground min-h-svh scroll-mt-[90px] overflow-hidden"
+>
+  <div class="pt-28 pb-20 sm:pt-32 sm:pb-20">
+    <div class="infinity-marquee-track flex items-start gap-2.5">
       {
-        instagramImages.map((image, index) => (
+        marqueeItems.map((image, index) => (
           <a
             href={bookingLinks.instagram}
-            aria-label={`Instagram ${index + 1}`}
-            class="focus-visible:ring-background/30 rounded-md focus-visible:ring-3 focus-visible:outline-none"
+            aria-label={`Infinity Barber Instagram ${index + 1}`}
+            class={`block shrink-0 overflow-hidden ${image.className}`}
           >
             <ResponsiveImage
-              src={image}
+              src={image.src}
               alt="Infinity Barber Instagram"
-              ratio={1}
-              className="h-full w-full rounded-md object-cover grayscale transition-[filter] duration-500 hover:grayscale-0"
-              sizes="(min-width: 1024px) 12vw, (min-width: 640px) 25vw, 50vw"
+              className="h-full w-full object-cover"
+              sizes="190px"
             />
           </a>
         ))
       }
     </div>
   </div>
+
+  <div class="mx-auto w-full max-w-[1480px] px-6 sm:px-8 lg:px-6">
+    <div
+      class="grid gap-12 pb-4 text-sm leading-[17px] font-semibold md:grid-cols-[1fr_auto] md:items-start"
+    >
+      <div class="flex flex-col gap-12">
+        <div>
+          <p>Prehľad</p>
+          <nav aria-label="Pätičková navigácia" class="flex flex-wrap">
+            {
+              footerNavItems.map((item, index) => (
+                <RollingLink
+                  href={item.href}
+                  text={`${item.label}${index < footerNavItems.length - 1 ? ", " : ""}`}
+                />
+              ))
+            }
+          </nav>
+        </div>
+
+        <CookieSettings
+          client:idle={{ timeout: 1500 }}
+          floating={false}
+          triggerClassName="h-auto self-start border-0 bg-transparent p-0 text-sm font-semibold leading-[17px] text-muted-foreground shadow-none hover:bg-transparent hover:text-foreground"
+          triggerLabel="Nastavenia cookies"
+        />
+      </div>
+
+      <div class="flex flex-col gap-0.5 md:items-end">
+        <p>Sociálne siete</p>
+        <nav aria-label="Sociálne siete" class="flex flex-wrap md:justify-end">
+          {
+            socialLinks.map((link, index) => (
+              <RollingLink
+                href={link.href}
+                rel="noreferrer"
+                target="_blank"
+                text={`${link.label}${index < socialLinks.length - 1 ? ", " : ""}`}
+              />
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+
+    <Separator className="bg-border/80" />
+
+    <a
+      href={bookingLinks.phone}
+      class="focus-visible:ring-ring/30 block py-8 text-[clamp(3.3rem,14vw,12.5rem)] leading-[0.9] font-semibold tracking-normal whitespace-nowrap focus-visible:ring-3 focus-visible:outline-none sm:py-10"
+    >
+      {phoneDisplay}
+    </a>
+  </div>
+
+  <a
+    href={bookingLinks.instagram}
+    aria-label="Instagram"
+    class={`${buttonVariants({
+      size: "icon",
+      variant: "secondary",
+    })} fixed right-5 bottom-1/2 z-30 rounded-full shadow-xl`}
+    data-slot="button"
+    data-size="icon"
+    data-variant="secondary"
+    rel="noreferrer"
+    target="_blank"
+  >
+    <CameraIcon />
+  </a>
 </footer>

@@ -20,6 +20,7 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@workspace/ui/components/field"
+import { cn } from "@workspace/ui/lib/utils"
 import { Switch } from "@workspace/ui/components/switch"
 
 const STORAGE_KEY = "infinity-cookie-settings"
@@ -50,6 +51,12 @@ const cookieFields = [
   },
 ] as const
 
+type CookieSettingsProps = {
+  floating?: boolean
+  triggerClassName?: string
+  triggerLabel?: string
+}
+
 function readSettings(): CookieState {
   try {
     const saved = window.localStorage.getItem(STORAGE_KEY)
@@ -79,7 +86,11 @@ function readSettings(): CookieState {
   }
 }
 
-export function CookieSettings() {
+export function CookieSettings({
+  floating = true,
+  triggerClassName,
+  triggerLabel = "Nastavenia cookies",
+}: CookieSettingsProps) {
   const [open, setOpen] = React.useState(false)
   const [settings, setSettings] = React.useState<CookieState>(() => {
     if (typeof window === "undefined") {
@@ -107,12 +118,15 @@ export function CookieSettings() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          className="fixed bottom-4 left-4 z-30 shadow-xl"
+          className={cn(
+            floating && "fixed bottom-4 left-4 z-30 shadow-xl",
+            triggerClassName
+          )}
           size="sm"
           variant="outline"
         >
-          <SettingsIcon data-icon="inline-start" />
-          Nastavenia cookies
+          {floating && <SettingsIcon data-icon="inline-start" />}
+          {triggerLabel}
         </Button>
       </DialogTrigger>
       <DialogContent className="bg-background rounded-md border sm:max-w-lg">

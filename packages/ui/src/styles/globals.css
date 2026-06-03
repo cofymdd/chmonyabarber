@@ -87,7 +87,7 @@
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
+    --background: oklch(0 0 0);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(0.985 0 0);
@@ -130,4 +130,67 @@
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
     }
+}
+
+@layer utilities {
+  .infinity-nav-list:hover [data-nav-link],
+  .infinity-nav-list:focus-within [data-nav-link] {
+    opacity: 0.42;
+  }
+
+  .infinity-nav-list:hover [data-nav-link]:hover,
+  .infinity-nav-list:focus-within [data-nav-link]:focus-visible {
+    color: var(--foreground);
+    opacity: 1;
+  }
+
+  .infinity-rolling-text {
+    display: inline-flex;
+    overflow: hidden;
+    line-height: 17px;
+    vertical-align: top;
+  }
+
+  .infinity-rolling-letter {
+    position: relative;
+    display: block;
+    white-space: pre;
+    transform: translateY(0);
+    transition: transform 540ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--letter-index) * 24ms);
+    will-change: transform;
+  }
+
+  .infinity-rolling-letter::after {
+    content: attr(data-letter);
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  .infinity-rolling-link:hover .infinity-rolling-letter,
+  .infinity-rolling-link:focus-visible .infinity-rolling-letter {
+    transform: translateY(-100%);
+  }
+
+  .infinity-marquee-track {
+    width: max-content;
+    animation: infinity-marquee 34s linear infinite;
+  }
+
+  @keyframes infinity-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .infinity-marquee-track {
+      animation: none;
+    }
+
+    .infinity-rolling-letter {
+      transition: none;
+    }
+  }
 }

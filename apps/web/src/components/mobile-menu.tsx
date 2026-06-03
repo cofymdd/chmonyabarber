@@ -2,6 +2,7 @@
 
 import { ClockIcon, MenuIcon, PhoneIcon } from "lucide-react"
 
+import { RollingLink } from "@/components/rolling-link"
 import { Button } from "@workspace/ui/components/button"
 import {
   Sheet,
@@ -61,14 +62,13 @@ export function MobileMenu({
             aria-label="Mobilná navigácia"
             className="flex flex-col gap-2 px-6 py-2"
           >
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <SheetClose key={item.href} asChild>
-                <a
+                <RollingLink
                   href={item.href}
-                  className="hover:bg-muted focus-visible:ring-ring/30 rounded-md border px-4 py-3 text-base font-medium transition-colors focus-visible:ring-3 focus-visible:outline-none"
-                >
-                  {item.label}
-                </a>
+                  className="border-border bg-background hover:bg-muted rounded-md border px-4 py-3 text-base"
+                  text={`${item.label}${index < navItems.length - 1 ? ", " : ""}`}
+                />
               </SheetClose>
             ))}
           </nav>

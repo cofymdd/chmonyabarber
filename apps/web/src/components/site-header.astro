@@ -1,9 +1,6 @@
 ---
-import { MapPinIcon } from "lucide-react"
-
 import { DesktopNav } from "@/components/desktop-nav"
 import { MobileMenu } from "@/components/mobile-menu"
-import { buttonVariants } from "@workspace/ui/components/button"
 
 type NavItem = {
   href: string
@@ -19,49 +16,48 @@ interface Props {
 }
 
 const { hours, location, logo, navItems, phone } = Astro.props
-const phoneHref = `tel:${phone.replace(/\s/g, "")}`
 ---
 
 <header
-  class="bg-background/90 sticky top-0 isolate z-40 border-b backdrop-blur-xl"
+  id="site-header"
+  class="bg-background fixed inset-x-0 top-0 isolate z-40"
 >
   <div
-    class="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10"
+    class="border-border/80 mx-auto grid h-[90px] w-full max-w-[1480px] grid-cols-[1fr_auto_1fr] items-center border-b px-6 sm:px-8 lg:px-6"
   >
     <a
       href="#uvod"
       aria-label="Infinity Barber - úvod"
-      class="focus-visible:ring-ring/30 flex min-w-0 items-center gap-3 rounded-md focus-visible:ring-3 focus-visible:outline-none"
+      class="focus-visible:ring-ring/30 flex min-w-0 items-center justify-self-start rounded-sm focus-visible:ring-3 focus-visible:outline-none"
     >
       <img
         src={logo}
         alt=""
         width="537"
         height="184"
-        class="h-10 w-auto"
+        class="h-[35px] w-auto"
         decoding="async"
       />
     </a>
 
-    <div class="hidden min-w-0 flex-col items-center gap-1 md:flex">
-      <p class="text-muted-foreground text-xs font-medium uppercase">Prehľad</p>
+    <div class="hidden min-w-0 flex-col gap-0.5 justify-self-center md:flex">
+      <p class="text-sm leading-[17px] font-semibold">Prehľad</p>
       <DesktopNav navItems={navItems} />
     </div>
 
-    <div class="hidden min-w-0 items-center gap-3 text-right text-sm lg:flex">
-      <MapPinIcon className="text-muted-foreground size-4 shrink-0" />
-      <div class="min-w-0">
-        <a
-          href="#kontakt"
-          class="focus-visible:ring-ring/30 font-medium hover:underline focus-visible:ring-3 focus-visible:outline-none"
-        >
-          {location}
-        </a>
-        <p class="text-muted-foreground">{hours}</p>
-      </div>
+    <div
+      class="hidden min-w-0 flex-col gap-0.5 justify-self-end text-left text-sm leading-[17px] font-semibold lg:flex"
+    >
+      <a
+        href="#kontakt"
+        class="focus-visible:ring-ring/30 rounded-sm focus-visible:ring-3 focus-visible:outline-none"
+      >
+        {location}
+      </a>
+      <p class="text-muted-foreground">{hours}</p>
     </div>
 
-    <div class="flex items-center gap-2 md:hidden">
+    <div class="col-start-3 flex items-center gap-2 justify-self-end md:hidden">
       <MobileMenu
         client:media="(max-width: 767px)"
         navItems={navItems}
@@ -69,18 +65,6 @@ const phoneHref = `tel:${phone.replace(/\s/g, "")}`
         hours={hours}
         phone={phone}
       />
-    </div>
-
-    <div class="hidden md:flex lg:hidden">
-      <a
-        href={phoneHref}
-        class={buttonVariants({ size: "sm", variant: "outline" })}
-        data-slot="button"
-        data-size="sm"
-        data-variant="outline"
-      >
-        Zavolať
-      </a>
     </div>
   </div>
 </header>

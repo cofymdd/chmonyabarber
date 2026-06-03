@@ -1,7 +1,7 @@
+import { RollingLink } from "@/components/rolling-link"
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "@workspace/ui/components/navigation-menu"
 
@@ -16,13 +16,14 @@ type DesktopNavProps = {
 
 export function DesktopNav({ navItems }: DesktopNavProps) {
   return (
-    <NavigationMenu viewport={false}>
-      <NavigationMenuList className="gap-1">
-        {navItems.map((item) => (
+    <NavigationMenu className="max-w-none" viewport={false}>
+      <NavigationMenuList className="infinity-nav-list gap-0">
+        {navItems.map((item, index) => (
           <NavigationMenuItem key={item.href}>
-            <NavigationMenuLink href={item.href}>
-              {item.label}
-            </NavigationMenuLink>
+            <RollingLink
+              href={item.href}
+              text={`${item.label}${index < navItems.length - 1 ? ", " : ""}`}
+            />
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>
