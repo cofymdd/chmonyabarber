@@ -2,8 +2,8 @@
 import { CookieSettings } from "@/components/cookie-settings"
 import ResponsiveImage from "@/components/responsive-image.astro"
 import { RollingLink } from "@/components/rolling-link"
-import { bookingLinks, contact, instagramImages } from "@/lib/infinity-content"
-import { Separator } from "@workspace/ui/components/separator"
+import { bookingLinks, contact, instagramImages } from "@/lib/chmonya-content"
+import { Separator } from "@chmonya-barber/ui/components/separator"
 
 const footerNavItems = [
   { label: "Úvod", href: "#uvod" },
@@ -40,7 +40,7 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
     >
       <div
         aria-hidden="true"
-        class="infinity-marquee-track flex items-start gap-2.5"
+        class="chmonya-marquee-track flex items-start gap-2.5"
       >
         {
           marqueeItems.map((image) => (

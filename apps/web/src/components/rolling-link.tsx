@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@workspace/ui/lib/utils"
+import { cn } from "@chmonya-barber/ui/lib/utils"
 
 type RollingTextProps = {
   accessibleText?: string
@@ -15,12 +15,12 @@ export function RollingText({ accessibleText, text }: RollingTextProps) {
   const label = accessibleText ?? getAccessibleText(text)
 
   return (
-    <span className="infinity-rolling-text">
+    <span className="chmonya-rolling-text">
       <span className="sr-only">{label}</span>
       <span aria-hidden="true" className="inline-flex">
         {Array.from(text).map((letter, index) => (
           <span
-            className="infinity-rolling-letter"
+            className="chmonya-rolling-letter"
             data-letter={letter}
             key={`${letter}-${index}`}
             style={{ "--letter-index": index } as React.CSSProperties}
@@ -55,7 +55,7 @@ export const RollingLink = React.forwardRef<
     return (
       <a
         className={cn(
-          "infinity-rolling-link focus-visible:ring-ring/30 text-muted-foreground hover:text-foreground focus-visible:text-foreground rounded-sm font-semibold transition-[color,opacity] duration-300 focus-visible:ring-3 focus-visible:outline-none",
+          "chmonya-rolling-link focus-visible:ring-ring/30 text-muted-foreground hover:text-foreground focus-visible:text-foreground rounded-sm font-semibold transition-[color,opacity] duration-300 focus-visible:ring-3 focus-visible:outline-none",
           className
         )}
         data-nav-link

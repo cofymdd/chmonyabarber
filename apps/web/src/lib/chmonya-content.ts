@@ -5,14 +5,13 @@ export const siteMeta = {
 }
 
 export const assets = {
-  logo: "/infinity/logo.svg",
-  hero: "/infinity/hero-haircut.jpg",
-  gentleman: "/infinity/gentleman-barber.jpg",
-  about: "/infinity/noznice.jpg",
-  team: "/infinity/team-wide.png",
-  barbers: "/infinity/barberi.jpg",
-  faq: "/infinity/faq-barberi.jpg",
-  shop: "/infinity/shop.jpg",
+  hero: "/chmonya-barber/hero-haircut.jpg",
+  gentleman: "/chmonya-barber/gentleman-barber.jpg",
+  about: "/chmonya-barber/noznice.jpg",
+  team: "/chmonya-barber/team-wide.png",
+  barbers: "/chmonya-barber/barberi.jpg",
+  faq: "/chmonya-barber/faq-barberi.jpg",
+  shop: "/chmonya-barber/shop.jpg",
 }
 
 export const navItems = [
@@ -48,31 +47,43 @@ export const styleCards = [
     number: "01",
     title: "Nočný fade",
     description: "Čistý prechod s výraznou siluetou.",
-    images: ["/infinity/gentleman-barber.jpg", "/infinity/elegantny-strih.jpg"],
+    images: [
+      "/chmonya-barber/gentleman-barber.jpg",
+      "/chmonya-barber/elegantny-strih.jpg",
+    ],
   },
   {
     number: "02",
     title: "Malý rebel",
     description: "Pohodový strih pre mladých dobrodruhov.",
-    images: ["/infinity/juniorsky-strih.jpg", "/infinity/detsky-uces.jpg"],
+    images: [
+      "/chmonya-barber/juniorsky-strih.jpg",
+      "/chmonya-barber/detsky-uces.jpg",
+    ],
   },
   {
     number: "03",
     title: "Mestský chaos",
     description: "Textúra, objem a zámerne voľný výsledok.",
-    images: ["/infinity/najnovsi-styl.jpg", "/infinity/moderny-uces.jpg"],
+    images: [
+      "/chmonya-barber/najnovsi-styl.jpg",
+      "/chmonya-barber/moderny-uces.jpg",
+    ],
   },
   {
     number: "04",
     title: "Tichý gentleman",
     description: "Nenápadná elegancia s presnými kontúrami.",
-    images: ["/infinity/elegantny-uces.jpg", "/infinity/muz-zrely.jpg"],
+    images: [
+      "/chmonya-barber/elegantny-uces.jpg",
+      "/chmonya-barber/muz-zrely.jpg",
+    ],
   },
   {
     number: "05",
     title: "Chmonya signature",
     description: "Výrazný strih vytvorený podľa nálady a tváre.",
-    images: ["/infinity/trendy-vzhlad.jpg", "/infinity/trendy.jpg"],
+    images: ["/chmonya-barber/trendy-vzhlad.jpg", "/chmonya-barber/trendy.jpg"],
   },
 ]
 
@@ -209,35 +220,35 @@ export const testimonials = [
   {
     name: "Roman Z.",
     relation: "Pravidelný návštevník",
-    image: "/infinity/review-peto.jpg",
+    image: "/chmonya-barber/review-peto.jpg",
     quote:
       "Prišiel som bez predstavy a stačilo pár otázok. Výsledok bol presný, pohodlný na údržbu a konečne mi sedel aj po dvoch týždňoch.",
   },
   {
     name: "Miloš B.",
     relation: "Fanúšik krátkych strihov",
-    image: "/infinity/review-jan.jpg",
+    image: "/chmonya-barber/review-jan.jpg",
     quote:
       "Oceňujem pokoj, žiadne ponáhľanie a čistú robotu. Kontúry držia a nemusím doma zachraňovať styling polovicou kúpeľne.",
   },
   {
     name: "Erik S.",
     relation: "Nový klient",
-    image: "/infinity/review-jozef.jpg",
+    image: "/chmonya-barber/review-jozef.jpg",
     quote:
       "Objednal som sa náhodou a zostal som kvôli prístupu. Vysvetlili mi, čo bude fungovať s mojimi vlasmi, a trafili to.",
   },
   {
     name: "Tomáš L.",
     relation: "Klient od otvorenia",
-    image: "/infinity/review-vlado.jpg",
+    image: "/chmonya-barber/review-vlado.jpg",
     quote:
       "CHMONYA má vlastnú atmosféru. Dám si kávu, vypnem hlavu a odchádzam upravený bez toho, aby som musel čokoľvek komplikovane opisovať.",
   },
   {
     name: "Zuzana M.",
     relation: "Mama mladého klienta",
-    image: "/infinity/review-alena.jpg",
+    image: "/chmonya-barber/review-alena.jpg",
     quote:
       "Syn sa kedysi strihaniu vyhýbal. Tu mu všetko pokojne ukázali, nechali ho vybrať detail a teraz sa na ďalšiu návštevu teší.",
   },
@@ -295,12 +306,12 @@ export const faqItems = [
 ]
 
 export const instagramImages = [
-  "/infinity/instagram-1.jpg",
-  "/infinity/instagram-2.jpg",
-  "/infinity/instagram-3.jpg",
-  "/infinity/instagram-4.jpg",
-  "/infinity/instagram-5.jpg",
-  "/infinity/instagram-6.jpg",
-  "/infinity/instagram-7.jpg",
-  "/infinity/instagram-8.jpg",
+  "/chmonya-barber/instagram-1.jpg",
+  "/chmonya-barber/instagram-2.jpg",
+  "/chmonya-barber/instagram-3.jpg",
+  "/chmonya-barber/instagram-4.jpg",
+  "/chmonya-barber/instagram-5.jpg",
+  "/chmonya-barber/instagram-6.jpg",
+  "/chmonya-barber/instagram-7.jpg",
+  "/chmonya-barber/instagram-8.jpg",
 ]

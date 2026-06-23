@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@chmonya-barber/web",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -16,7 +16,7 @@
     "@astrojs/react": "^5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@workspace/ui": "workspace:*",
+    "@chmonya-barber/ui": "workspace:*",
     "astro": "^6",
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",

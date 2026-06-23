@@ -1,39 +1,56 @@
-# Astro + React + TypeScript + shadcn/ui (Monorepo)
+# CHMONYA BARBER
 
-This is a monorepo template for Astro with React, TypeScript, and shadcn/ui.
+Webová prezentácia fiktívneho barbershopu CHMONYA BARBER v Košiciach.
 
-## Structure
+## Technológie
 
-- `apps/web` - Astro application
-- `packages/ui` - Shared UI components (shadcn/ui)
+- Astro
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Bun workspaces
+- Turborepo
 
-## Adding components
+## Štruktúra
 
-To add components, run the following command from the root:
+- `apps/web` - hlavná Astro aplikácia
+- `packages/ui` - zdieľané UI komponenty
+- `apps/web/public/chmonya-barber` - obrázky a verejné médiá značky
+- `apps/web/src/lib/chmonya-content.ts` - textový obsah, služby a kontakty
+- `apps/web/src/lib/chmonya-images.ts` - rozmery obrázkov
+
+## Vývoj
 
 ```bash
-npx shadcn@latest add button -c apps/web
+bun install
+bun run dev
 ```
 
-## Using components
+Lokálna aplikácia je štandardne dostupná na `http://localhost:4321`.
 
-To use the components in your app, import them in an `.astro` file:
+## Kontrola projektu
+
+```bash
+bun run lint
+bun run typecheck
+bun run build
+```
+
+## UI komponenty
+
+Komponenty shadcn/ui sa pridávajú z koreňa projektu:
+
+```bash
+bunx --bun shadcn@latest add button -c apps/web
+```
+
+Import zdieľaného komponentu:
 
 ```astro
 ---
-import { Button } from "@workspace/ui/components/button"
+import { Button } from "@chmonya-barber/ui/components/button"
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Astro App</title>
-  </head>
-  <body>
-    <div class="grid h-screen place-items-center content-center">
-      <Button>Button</Button>
-    </div>
-  </body>
-</html>
+<Button>Rezervovať</Button>
 ```

@@ -14,8 +14,8 @@
     "components": "@/components",
     "hooks": "@/hooks",
     "lib": "@/lib",
-    "utils": "@workspace/ui/lib/utils",
-    "ui": "@workspace/ui/components"
+    "utils": "@chmonya-barber/ui/lib/utils",
+    "ui": "@chmonya-barber/ui/components"
   },
   "rtl": false,
   "menuColor": "default",

@@ -3,7 +3,7 @@
 import * as React from "react"
 import { CookieIcon, SettingsIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { Button } from "@chmonya-barber/ui/components/button"
 import {
   Dialog,
   DialogContent,
@@ -12,18 +12,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@workspace/ui/components/dialog"
+} from "@chmonya-barber/ui/components/dialog"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@workspace/ui/components/field"
-import { cn } from "@workspace/ui/lib/utils"
-import { Switch } from "@workspace/ui/components/switch"
+} from "@chmonya-barber/ui/components/field"
+import { cn } from "@chmonya-barber/ui/lib/utils"
+import { Switch } from "@chmonya-barber/ui/components/switch"
 
-const STORAGE_KEY = "infinity-cookie-settings"
+const STORAGE_KEY = "chmonya-barber-cookie-settings"
 const STORAGE_VERSION = 1
 
 type CookieState = {

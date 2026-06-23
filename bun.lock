@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "astro-monorepo",
+      "name": "chmonya-barber",
       "devDependencies": {
         "prettier": "^3.8.3",
         "prettier-plugin-astro": "^0.14.1",
@@ -13,13 +13,13 @@
       },
     },
     "apps/web": {
-      "name": "web",
+      "name": "@chmonya-barber/web",
       "version": "0.0.1",
       "dependencies": {
         "@astrojs/react": "^5",
         "@types/react": "^19",
         "@types/react-dom": "^19",
-        "@workspace/ui": "workspace:*",
+        "@chmonya-barber/ui": "workspace:*",
         "astro": "^6",
         "lucide-react": "^1.17.0",
         "react": "^19.2.6",
@@ -39,7 +39,7 @@
       },
     },
     "packages/ui": {
-      "name": "@workspace/ui",
+      "name": "@chmonya-barber/ui",
       "version": "0.0.0",
       "dependencies": {
         "@fontsource-variable/inter": "^5.2.8",
@@ -703,7 +703,7 @@
 
     "@vscode/l10n": ["@vscode/l10n@0.0.18", "", {}, "sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ=="],
 
-    "@workspace/ui": ["@workspace/ui@workspace:packages/ui"],
+    "@chmonya-barber/ui": ["@chmonya-barber/ui@workspace:packages/ui"],
 
     "accepts": ["accepts@2.0.0", "", { "dependencies": { "mime-types": "^3.0.0", "negotiator": "^1.0.0" } }, "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng=="],
 
@@ -1779,7 +1779,7 @@
 
     "vscode-uri": ["vscode-uri@3.1.0", "", {}, "sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ=="],
 
-    "web": ["web@workspace:apps/web"],
+    "@chmonya-barber/web": ["@chmonya-barber/web@workspace:apps/web"],
 
     "web-namespaces": ["web-namespaces@2.0.1", "", {}, "sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ=="],
 

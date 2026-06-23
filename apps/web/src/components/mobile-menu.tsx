@@ -3,7 +3,7 @@
 import { ClockIcon, MenuIcon, PhoneIcon } from "lucide-react"
 
 import { RollingLink } from "@/components/rolling-link"
-import { Button } from "@workspace/ui/components/button"
+import { Button } from "@chmonya-barber/ui/components/button"
 import {
   Sheet,
   SheetClose,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@workspace/ui/components/sheet"
+} from "@chmonya-barber/ui/components/sheet"
 
 type NavItem = {
   href: string

@@ -3,7 +3,7 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-} from "@workspace/ui/components/navigation-menu"
+} from "@chmonya-barber/ui/components/navigation-menu"
 
 type NavItem = {
   href: string
@@ -17,7 +17,7 @@ type DesktopNavProps = {
 export function DesktopNav({ navItems }: DesktopNavProps) {
   return (
     <NavigationMenu className="max-w-none" viewport={false}>
-      <NavigationMenuList className="infinity-nav-list gap-0">
+      <NavigationMenuList className="chmonya-nav-list gap-0">
         {navItems.map((item, index) => (
           <NavigationMenuItem key={item.href}>
             <RollingLink

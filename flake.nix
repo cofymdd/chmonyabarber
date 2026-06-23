@@ -1,5 +1,5 @@
 {
-   description = "website";
+   description = "CHMONYA BARBER website";
 
    inputs = {
       nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

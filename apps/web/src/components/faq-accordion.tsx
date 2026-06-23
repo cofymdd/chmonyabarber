@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@workspace/ui/components/accordion"
+} from "@chmonya-barber/ui/components/accordion"
 
 type FaqItem = {
   value: string

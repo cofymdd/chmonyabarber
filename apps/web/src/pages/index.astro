@@ -10,7 +10,7 @@ import TeamSection from "@/components/sections/team-section.astro"
 import TestimonialsSection from "@/components/sections/testimonials-section.astro"
 import SiteHeader from "@/components/site-header.astro"
 import MainLayout from "@/layouts/main.astro"
-import { assets, contact, navItems, siteMeta } from "@/lib/infinity-content"
+import { contact, navItems, siteMeta } from "@/lib/chmonya-content"
 ---
 
 <MainLayout title={siteMeta.title} description={siteMeta.description}>
@@ -23,7 +23,6 @@ import { assets, contact, navItems, siteMeta } from "@/lib/infinity-content"
 
   <SiteHeader
     navItems={navItems}
-    logo={assets.logo}
     location={contact.location}
     hours={contact.hours}
     phone={contact.phone}
