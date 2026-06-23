@@ -15,7 +15,7 @@ interface Props {
   phone: string
 }
 
-const { hours, location, logo, navItems, phone } = Astro.props
+const { hours, location, navItems, phone } = Astro.props
 ---
 
 <header
@@ -27,17 +27,12 @@ const { hours, location, logo, navItems, phone } = Astro.props
   >
     <a
       href="#uvod"
-      aria-label="Infinity Barber - úvod"
-      class="focus-visible:ring-ring/30 flex min-w-0 items-center justify-self-start rounded-sm focus-visible:ring-3 focus-visible:outline-none"
+      aria-label="CHMONYA BARBER - úvod"
+      class="focus-visible:ring-ring/30 flex min-w-0 flex-col items-center justify-self-start rounded-sm leading-none focus-visible:ring-3 focus-visible:outline-none"
+      translate="no"
     >
-      <img
-        src={logo}
-        alt=""
-        width="537"
-        height="184"
-        class="h-[35px] w-auto"
-        decoding="async"
-      />
+      <span class="text-xl font-black tracking-[-0.06em]">CHMONYA</span>
+      <span class="text-[0.58rem] font-semibold tracking-[0.18em]">BARBER</span>
     </a>
 
     <div class="hidden min-w-0 flex-col gap-0.5 justify-self-center md:flex">

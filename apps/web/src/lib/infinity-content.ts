@@ -1,7 +1,7 @@
 export const siteMeta = {
-  title: "INFINITY BARBER",
+  title: "CHMONYA BARBER",
   description:
-    "Infinity Barber v OC Eperia, Prešov. Profesionálna starostlivosť, pohodová atmosféra a presný strih podľa tvojich predstáv.",
+    "CHMONYA BARBER v Košiciach. Moderné strihy, kreatívna úprava brady a pokojná atmosféra bez zbytočného zhonu.",
 }
 
 export const assets = {
@@ -16,23 +16,23 @@ export const assets = {
 }
 
 export const navItems = [
-  { label: "Úvod", href: "#uvod" },
-  { label: "O nás", href: "#o-nas" },
-  { label: "Cenník", href: "#sluzby" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Začiatok", href: "#uvod" },
+  { label: "Príbeh", href: "#o-nas" },
+  { label: "Služby", href: "#sluzby" },
+  { label: "Spojenie", href: "#kontakt" },
 ]
 
-export const heroTags = ["Vlasy", "Brada", "Starostlivosť", "Relax"]
+export const heroTags = ["Strih", "Kontúry", "Detail", "Pohoda"]
 
 export const contact = {
-  location: "Prešov, Eperia - 1. poschodie",
-  hours: "Denne od 9:00 - 21:00",
-  phone: "+421 949 177 635",
-  email: "infinitybarberpresov@gmail.com",
-  address: "OC Eperia, 1. poschodie, pri foodcourte",
-  company: "Infinity Company s. r. o.",
-  billing: "IČO: 56525915, DIČ: 2122339780, Budovateľská 698/10, 086 33 Zborov",
-  maps: "https://www.google.com/maps/place/EPERIA+Shopping+Mall/@48.9888737,21.2606642,17z/data=!4m6!3m5!1s0x473eed0cde53953f:0xb9298f14766e21a1!8m2!3d48.9889195!4d21.2626222!16s%2Fg%2F11f_z8r59k",
+  location: "Košice, Lunárna pasáž - prízemie",
+  hours: "Denne od 10:00 - 20:00",
+  phone: "+421 000 000 000",
+  email: "info@chmonya-barber.test",
+  address: "Mesačná 00, 000 00 Košice, Slovensko",
+  company: "CHMONYA BARBER s. r. o.",
+  billing: "IČO: 00000000, DIČ: 0000000000, IČ DPH: SK0000000000",
+  maps: "https://www.google.com/maps/search/?api=1&query=Ko%C5%A1ice%2C+Slovensko",
 }
 
 export const bookingLinks = {
@@ -41,251 +41,256 @@ export const bookingLinks = {
   contact: "#kontakt",
 }
 
-export const serviceTags = ["Umytie", "Holenie", "Styling", "Strih"]
+export const serviceTags = ["Refresh", "Fade", "Brada", "Finish"]
 
 export const styleCards = [
   {
     number: "01",
-    title: "Klasické strihy",
-    description: "Elegancia, ktorá funguje vždy.",
+    title: "Nočný fade",
+    description: "Čistý prechod s výraznou siluetou.",
     images: ["/infinity/gentleman-barber.jpg", "/infinity/elegantny-strih.jpg"],
   },
   {
     number: "02",
-    title: "Aj pre najmladších",
-    description: "Štýloví synovia.",
+    title: "Malý rebel",
+    description: "Pohodový strih pre mladých dobrodruhov.",
     images: ["/infinity/juniorsky-strih.jpg", "/infinity/detsky-uces.jpg"],
   },
   {
     number: "03",
-    title: "Trendy look",
-    description: "Podľa najnovších štýlov.",
+    title: "Mestský chaos",
+    description: "Textúra, objem a zámerne voľný výsledok.",
     images: ["/infinity/najnovsi-styl.jpg", "/infinity/moderny-uces.jpg"],
   },
   {
     number: "04",
-    title: "Pre zrelých pánov",
-    description: "Strihy, ktoré vyniknú aj s vekom.",
+    title: "Tichý gentleman",
+    description: "Nenápadná elegancia s presnými kontúrami.",
     images: ["/infinity/elegantny-uces.jpg", "/infinity/muz-zrely.jpg"],
   },
   {
     number: "05",
-    title: "Jedinečný výraz",
-    description: "Originálny vzhľad pre odvážnych.",
+    title: "Chmonya signature",
+    description: "Výrazný strih vytvorený podľa nálady a tváre.",
     images: ["/infinity/trendy-vzhlad.jpg", "/infinity/trendy.jpg"],
   },
 ]
 
 export const priceGroups = [
   {
-    label: "SINGLE",
+    label: "RÝCHLO",
     items: [
       {
         number: "01",
-        name: "JUNIOR Strih (do 10 r.)",
-        description: "Strih, umytie, styling",
-        price: "13 €",
+        name: "Mini Chmonya",
+        description: "Detský strih, jemné kontúry a finálny styling",
+        price: "11 €",
       },
       {
         number: "02",
-        name: "ŠTUDENT Strih (nad 10 r., ISIC, EURO 26)",
-        description: "Strih, umytie, styling",
-        price: "15 €",
+        name: "Študentský reset",
+        description: "Svieži strih, umytie a matný finish",
+        price: "14 €",
       },
       {
         number: "03",
-        name: "PÁNSKY Strih",
-        description: "Strih, umytie, styling",
-        price: "17 €",
+        name: "Mestský strih",
+        description: "Konzultácia, strih, umytie a styling",
+        price: "19 €",
       },
       {
         number: "04",
-        name: "Strih LEN BOKY",
-        description: "Strih, umytie, styling",
-        price: "15 €",
+        name: "Kontúrový servis",
+        description: "Boky, zátylok a ostré línie bez úpravy vrchu",
+        price: "12 €",
       },
       {
         number: "05",
-        name: "Holenie hlavy (1 nadstavec)",
-        description: "Holenie britvou alebo strojčekom, umytie hlavy",
-        price: "13 €",
+        name: "Nulový režim",
+        description: "Kompletné skrátenie strojčekom a upokojenie pokožky",
+        price: "10 €",
       },
       {
         number: "06",
-        name: "Úprava brady",
-        description: "Úprava brady, tvarovanie, úprava kontúr",
-        price: "13 €",
+        name: "Brada na poriadok",
+        description: "Tvarovanie brady, horúci uterák a olej",
+        price: "12 €",
       },
     ],
   },
   {
-    label: "COMBO",
+    label: "NAPLNO",
     items: [
       {
         number: "07",
-        name: "ŠTUDENT Strih + úprava brady (ISIC, EURO 26)",
-        description: "Strih, úprava brady, umytie, styling",
-        price: "20 €",
+        name: "Campus combo",
+        description: "Študentský strih, brada, umytie a finish",
+        price: "21 €",
       },
       {
         number: "08",
-        name: "PÁNSKY Strih + úprava brady",
-        description: "Strih, úprava brady, umytie, styling",
-        price: "24 €",
+        name: "Chmonya komplet",
+        description: "Strih, detailná brada, kontúry a styling",
+        price: "27 €",
       },
       {
         number: "09",
-        name: "Strih DOHOLA (1 nadstavec) + úprava brady",
-        description: "Strih, umytie, styling, úprava brady",
-        price: "18 €",
+        name: "Hladká hlava + brada",
+        description: "Strojček, britva, tvarovanie brady a balzam",
+        price: "22 €",
       },
     ],
   },
   {
-    label: "NAVYSE",
+    label: "DROBNOSTI",
     items: [
       {
         number: "10",
-        name: "Depilácia nosa",
-        description: "Odstránenie chĺpkov z nosa depilačným voskom",
-        price: "2 €",
+        name: "Obočie na milimeter",
+        description: "Rýchle zarovnanie a vyčistenie tvaru obočia",
+        price: "3 €",
       },
       {
         number: "11",
-        name: "Opaľovanie uší",
-        description: "Tradičná technika odstránenia jemných chĺpkov v ušiach",
-        price: "2 €",
+        name: "Horúci uterák",
+        description: "Krátky relaxačný rituál pred finálnou úpravou",
+        price: "4 €",
       },
       {
         number: "12",
-        name: "Darčeková poukážka",
-        description: "Daruj štýl v ľubovoľnej hodnote",
-        price: "- €",
+        name: "Kredit pre kamoša",
+        description: "Darčekový kredit v ľubovoľnej zvolenej hodnote",
+        price: "0 €",
       },
     ],
   },
 ]
 
 export const barbers = [
-  { name: "Kyril Lut", quote: "Bude to top!", role: "Barber", nick: "Kyril" },
   {
-    name: "Richard Mendeľ",
-    quote: "Roky praxe v každom ťahu.",
+    name: "Marek Hmla",
+    quote: "Každý detail má svoj dôvod.",
     role: "Barber",
-    nick: "Riso",
+    nick: "Hmlák",
   },
   {
-    name: "Peter Maxim",
-    quote: "Robím to, čo ma najviac baví.",
+    name: "Oliver Kríž",
+    quote: "Najprv tvar, potom charakter.",
     role: "Barber",
-    nick: "Maxo",
+    nick: "Oli",
   },
   {
-    name: "Lukáš Pilnik",
-    quote: "Fakt dobre ťa ostrihám.",
+    name: "Samuel Vŕba",
+    quote: "Čisté línie, pokojná hlava.",
     role: "Barber",
-    nick: "Lukas",
+    nick: "Samo",
   },
   {
-    name: "Tatiana Struková",
-    quote: "Určite budeš spokojný.",
-    role: "Barber",
-    nick: "Tatiana",
+    name: "Nina Kováčová",
+    quote: "Dobrý strih nemusí kričať.",
+    role: "Barberka",
+    nick: "Nix",
   },
   {
-    name: "Dávid Talpaš",
-    quote: "Vieš, že si v dobrých rukách.",
+    name: "Teodor Mráz",
+    quote: "Fade ladím, kým nesedí.",
     role: "Barber",
-    nick: "David",
+    nick: "Teo",
+  },
+  {
+    name: "Viktor Runa",
+    quote: "Odchádzaš lepšie, než si prišiel.",
+    role: "Barber",
+    nick: "Vik",
   },
 ]
 
 export const testimonials = [
   {
-    name: "Peťo I.",
-    relation: "Dlhoročný klient",
+    name: "Roman Z.",
+    relation: "Pravidelný návštevník",
     image: "/infinity/review-peto.jpg",
     quote:
-      "Chodím sa strihať už pár rokov a nikdy som nemal pocit, že by to bolo odfláknuté. Sadnem do kresla a viem, že to dopadne dobre.",
+      "Prišiel som bez predstavy a stačilo pár otázok. Výsledok bol presný, pohodlný na údržbu a konečne mi sedel aj po dvoch týždňoch.",
   },
   {
-    name: "Ján V.",
-    relation: "Klient, teraz už kamarát",
+    name: "Miloš B.",
+    relation: "Fanúšik krátkych strihov",
     image: "/infinity/review-jan.jpg",
     quote:
-      "Najviac cením, že nemusím veľa vysvetľovať. Spraví to tak, ako má. Celé je to v pohode a výsledok vždy vyzerá dobre.",
+      "Oceňujem pokoj, žiadne ponáhľanie a čistú robotu. Kontúry držia a nemusím doma zachraňovať styling polovicou kúpeľne.",
   },
   {
-    name: "Jozef D.",
-    relation: "Dlhoročný klient",
+    name: "Erik S.",
+    relation: "Nový klient",
     image: "/infinity/review-jozef.jpg",
     quote:
-      "Mám rád klasický strih a úpravu brady, nič extra výstredné. Presne to tu vždy dostanem vo vysokej kvalite.",
+      "Objednal som sa náhodou a zostal som kvôli prístupu. Vysvetlili mi, čo bude fungovať s mojimi vlasmi, a trafili to.",
   },
   {
-    name: "Vlado K.",
-    relation: "Prvá skúsenosť",
+    name: "Tomáš L.",
+    relation: "Klient od otvorenia",
     image: "/infinity/review-vlado.jpg",
     quote:
-      "Bol som prvýkrát a hneď som vedel, že sa vrátim. Všetko bolo precízne zastrihnuté a výsledok bol ešte lepší, než som čakal.",
+      "CHMONYA má vlastnú atmosféru. Dám si kávu, vypnem hlavu a odchádzam upravený bez toho, aby som musel čokoľvek komplikovane opisovať.",
   },
   {
-    name: "Alena E.",
-    relation: "Hugo - jej malý syn",
+    name: "Zuzana M.",
+    relation: "Mama mladého klienta",
     image: "/infinity/review-alena.jpg",
     quote:
-      "S malým sme mali inde problém. Tu sú barberi pokojní, majú trpezlivosť a Hugo sa sem dokonca teší.",
+      "Syn sa kedysi strihaniu vyhýbal. Tu mu všetko pokojne ukázali, nechali ho vybrať detail a teraz sa na ďalšiu návštevu teší.",
   },
 ]
 
 export const faqItems = [
   {
-    value: "walk-in",
-    question: "Musím si dohodnúť termín, alebo môžem prísť len tak?",
+    value: "booking",
+    question: "Potrebujem rezerváciu, ak chcem iba rýchle kontúry?",
     answer:
-      "Môžeš prísť aj na počkanie, no rezervácia ti istí pripravené kreslo a konkrétny čas.",
+      "Rezervácia je najistejšia aj pri krátkej službe. Ak je práve voľné kreslo, radi ťa vezmeme aj bez objednania.",
   },
   {
-    value: "duration",
-    question: "Ako dlho trvá strihanie alebo úprava brady?",
+    value: "consultation",
+    question: "Čo ak vôbec neviem, aký strih mi pristane?",
     answer:
-      "Samotný čas závisí od služby, no bežný strih alebo úprava brady je krátka návšteva. Combo si necháva viac priestoru na detail.",
+      "To je úplne v poriadku. Pozrieme sa na tvar tváre, rast vlasov a tvoju bežnú rutinu a navrhneme riešenie, ktoré nebude fungovať iba v deň návštevy.",
   },
   {
-    value: "wash",
-    question: "Pred strihom si musím umyť vlasy doma?",
+    value: "late",
+    question: "Čo mám urobiť, keď meškám?",
     answer:
-      "Nie. Pri strihu počítame s umytím a stylingom, aby bol výsledok čistý a presný.",
+      "Ozvi sa nám čo najskôr. Pri krátkom meškaní termín upravíme, pri väčšom sklze nájdeme nový čas, aby ďalší klient nemusel čakať.",
   },
   {
-    value: "result",
-    question: "Čo ak sa mi výsledný strih nebude páčiť?",
+    value: "maintenance",
+    question: "Ako často sa oplatí obnovovať fade?",
     answer:
-      "Povedz nám to priamo v kresle. Úpravu doladíme tak, aby si odchádzal spokojný.",
+      "Výrazný fade väčšinou vyzerá najlepšie pri obnove každé dva až tri týždne. Pri mäkšom prechode môže byť interval pokojne dlhší.",
   },
   {
-    value: "fade",
-    question: "Robíte aj fade alebo iné moderné účesy?",
+    value: "beard",
+    question: "Viete upraviť aj dlhšiu alebo nepravidelnú bradu?",
     answer:
-      "Áno. Robíme klasiku, fade aj aktuálne trendy podľa toho, čo ti sedí a čo chceš nosiť.",
+      "Áno. Najprv nastavíme tvar, potom upravíme hustotu, kontúry a odporučíme jednoduchú domácu starostlivosť.",
   },
   {
     value: "products",
-    question: "Máte aj produkty na úpravu vlasov alebo brady?",
+    question: "Musím si po strihu kúpiť profesionálne produkty?",
     answer:
-      "Pri stylingu ti odporučíme vhodnú starostlivosť a spôsob úpravy podľa vlasov alebo brady.",
+      "Nemusíš. Ukážeme ti, ako výsledok upraviť aj s tým, čo už používaš, a produkt odporučíme iba vtedy, keď má pre tvoje vlasy zmysel.",
   },
   {
-    value: "kids",
-    question: "Robíte aj detské strihy alebo ženské?",
+    value: "companions",
+    question: "Môžem prísť s kamarátom alebo dieťaťom?",
     answer:
-      "V cenníku je juniorsky strih do 10 rokov. Pri špeciálnej požiadavke je najlepšie ozvať sa vopred.",
+      "Áno, pokiaľ je v čakacej zóne miesto. Pri väčšej skupine nám radšej napíš vopred, aby prevádzka zostala pohodlná pre všetkých.",
   },
   {
-    value: "card",
-    question: "Môžem platiť kartou?",
+    value: "payment",
+    question: "Aké platobné možnosti prijímate?",
     answer:
-      "Najrýchlejšie je overiť aktuálne možnosti priamo pri rezervácii alebo na prevádzke.",
+      "Toto je ukážkový obsah. Aktuálne platobné možnosti si over pri rezervácii alebo priamo na prevádzke.",
   },
 ]
 

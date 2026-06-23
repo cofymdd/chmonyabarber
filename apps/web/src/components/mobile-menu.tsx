@@ -53,7 +53,7 @@ export function MobileMenu({
           className="border-border bg-background w-[min(88vw,24rem)]"
         >
           <SheetHeader>
-            <SheetTitle>INFINITY BARBER</SheetTitle>
+            <SheetTitle>CHMONYA BARBER</SheetTitle>
             <SheetDescription>
               {location}. {hours}.
             </SheetDescription>
