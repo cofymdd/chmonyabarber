@@ -62,12 +62,12 @@ export function MobileMenu({
             aria-label="Mobilná navigácia"
             className="flex flex-col gap-2 px-6 py-2"
           >
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <SheetClose key={item.href} asChild>
                 <RollingLink
                   href={item.href}
                   className="border-border bg-background hover:bg-muted rounded-md border px-4 py-3 text-base"
-                  text={`${item.label}${index < navItems.length - 1 ? ", " : ""}`}
+                  text={item.label}
                 />
               </SheetClose>
             ))}
