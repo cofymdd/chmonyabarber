@@ -1,6 +1,8 @@
 ---
 import "@chmonya-barber/ui/globals.css"
 
+import { withBase } from "@/lib/paths"
+
 interface Props {
   title?: string
   description?: string
@@ -12,6 +14,12 @@ const {
   description = "CHMONYA BARBER v Košiciach.",
   lang = "sk",
 } = Astro.props
+
+const favicon = withBase("/favicon.svg")
+const socialImagePath = withBase("/chmonya-barber/shop.jpg")
+const socialImage = Astro.site
+  ? new URL(socialImagePath, Astro.site).href
+  : socialImagePath
 ---
 
 <html lang={lang} class="dark scroll-smooth">
@@ -19,16 +27,16 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#171717" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/chmonya-barber/shop.jpg" />
+    <meta property="og:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/chmonya-barber/shop.jpg" />
+    <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
   </head>
   <body class="bg-background text-foreground min-h-svh antialiased">
