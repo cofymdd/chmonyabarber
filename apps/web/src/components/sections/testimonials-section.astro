@@ -1,56 +1,392 @@
 ---
-import ReservationButton from "@/components/reservation-button.astro"
 import ResponsiveImage from "@/components/responsive-image.astro"
-import SectionEyebrow from "@/components/section-eyebrow.astro"
 import { testimonials } from "@/lib/infinity-content"
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "@workspace/ui/components/card"
+
+const tickerText = "Recenzie© - Feedback -"
+
+const cardMotion = [
+  { lane: -0.3, rotate: -3.4, start: 0, end: 0.25 },
+  { lane: 0.26, rotate: 2.8, start: 0.13, end: 0.5 },
+  { lane: -0.22, rotate: -1.8, start: 0.26, end: 0.75 },
+  { lane: 0.33, rotate: 2.2, start: 0.42, end: 0.85 },
+  { lane: -0.24, rotate: -1.2, start: 0.52, end: 1 },
+]
 ---
 
 <section
-  class="mx-auto w-full max-w-[1440px] border-b px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+  class="testimonials-section border-b"
+  aria-labelledby="testimonials-heading"
+  data-testimonials-section
 >
-  <div class="flex flex-col gap-8">
-    <div class="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-      <div class="flex flex-col gap-3">
-        <SectionEyebrow>INFINITY BARBER / Povedali ste o nás</SectionEyebrow>
-        <h2
-          class="text-4xl leading-tight font-medium text-balance break-words sm:text-7xl sm:leading-none"
-        >
-          Recenzie - Feedback -
-        </h2>
-      </div>
-      <ReservationButton label="Kontaktovať" variant="outline" />
+  <div class="testimonials-sticky" data-testimonials-sticky>
+    <div class="testimonials-kicker">
+      <p>INFINITY BARBER</p>
+      <p>RECENZIE</p>
     </div>
 
-    <div class="grid gap-4 lg:grid-cols-5">
-      {
-        testimonials.map((testimonial) => (
-          <Card className="rounded-md border bg-card" size="sm">
-            <CardHeader>
-              <ResponsiveImage
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="size-14 rounded-md object-cover grayscale"
-                sizes="56px"
-              />
-              <CardDescription className="leading-6">
-                "{testimonial.quote}"
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="flex-col items-start gap-1 border-t">
-              <p class="font-medium">{testimonial.name}</p>
-              <p class="text-muted-foreground text-sm">
-                {testimonial.relation}
-              </p>
-            </CardFooter>
-          </Card>
-        ))
-      }
+    <div class="testimonials-stage">
+      <div class="testimonials-backdrop" aria-hidden="true">
+        <div class="testimonials-marquee" data-testimonials-marquee>
+          <span class="testimonials-marquee-copy">{tickerText}</span>
+          <span class="testimonials-marquee-copy">{tickerText}</span>
+        </div>
+      </div>
+
+      <h2 id="testimonials-heading" class="sr-only">
+        Recenzie klientov Infinity Barber
+      </h2>
+
+      <div class="testimonials-card-layer" aria-label="Recenzie klientov">
+        {
+          testimonials.map((testimonial, index) => {
+            const motion = cardMotion[index % cardMotion.length]
+
+            return (
+              <article
+                class="testimonial-flight-card"
+                data-testimonial-card
+                data-lane={motion.lane}
+                data-rotate={motion.rotate}
+                data-start={motion.start}
+                data-end={motion.end}
+              >
+                <div class="testimonial-card-copy">
+                  <p class="testimonial-card-quote">"{testimonial.quote}"</p>
+                  <div class="testimonial-card-author">
+                    <ResponsiveImage
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="testimonial-card-image grayscale"
+                      sizes="48px"
+                    />
+                    <div>
+                      <p>{testimonial.name}</p>
+                      <p>{testimonial.relation}</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            )
+          })
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .testimonials-section {
+    position: relative;
+    min-height: 390svh;
+    overflow: visible;
+    background: var(--background);
+  }
+
+  .testimonials-sticky {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    height: calc(112svh - 90px);
+    min-height: 820px;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--background);
+  }
+
+  .testimonials-kicker {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding: 2.25rem 2rem 1.75rem;
+    color: var(--foreground);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .testimonials-kicker p:last-child {
+    color: var(--muted-foreground);
+  }
+
+  .testimonials-stage {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .testimonials-backdrop {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .testimonials-marquee {
+    display: flex;
+    width: max-content;
+    color: var(--foreground);
+    font-size: clamp(5.4rem, 16vw, 15rem);
+    font-weight: 600;
+    line-height: 0.85;
+    will-change: transform;
+    animation: testimonials-marquee-loop 18s linear infinite;
+  }
+
+  .testimonials-marquee-copy {
+    flex: none;
+    padding-right: 0.22em;
+    white-space: nowrap;
+  }
+
+  .testimonials-card-layer {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  .testimonial-flight-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(46rem, calc(100vw - 2.5rem));
+    min-height: 13.5rem;
+    border: 1px solid color-mix(in oklch, var(--foreground) 18%, transparent);
+    border-radius: 10px;
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in oklch, var(--foreground) 5%, transparent),
+        transparent 38%
+      ),
+      var(--background);
+    color: var(--foreground);
+    box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 0.52);
+    transform: translate3d(-50%, -120%, 0);
+    will-change: transform;
+  }
+
+  .testimonial-card-copy {
+    display: flex;
+    min-height: inherit;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .testimonial-card-quote {
+    max-width: 58rem;
+    color: color-mix(in oklch, var(--foreground) 90%, transparent);
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .testimonial-card-author {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    border-top: 1px solid
+      color-mix(in oklch, var(--foreground) 12%, transparent);
+    padding-top: 1rem;
+  }
+
+  :global(.testimonial-card-image) {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .testimonial-card-author p:first-child {
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .testimonial-card-author p:last-child {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 900px) {
+    .testimonials-section {
+      min-height: 430svh;
+    }
+
+    .testimonial-flight-card {
+      width: min(38rem, 42vw);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .testimonials-sticky {
+      height: calc(108svh - 90px);
+      min-height: 760px;
+    }
+
+    .testimonials-kicker {
+      padding: 1.5rem 1.25rem 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .testimonials-marquee {
+      font-size: clamp(5.6rem, 24vw, 9rem);
+    }
+
+    .testimonial-flight-card {
+      width: calc(100vw - 2.5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-section {
+      min-height: auto;
+      padding: 0 0 4rem;
+    }
+
+    .testimonials-sticky {
+      position: relative;
+      top: auto;
+      height: auto;
+      min-height: auto;
+    }
+
+    .testimonials-stage {
+      display: block;
+      padding: 6rem 1.25rem 0;
+      overflow: visible;
+    }
+
+    .testimonials-backdrop {
+      position: relative;
+      inset: auto;
+      margin: 0 -1.25rem 3rem;
+      min-height: 12rem;
+    }
+
+    .testimonials-marquee {
+      animation: none;
+      transform: none;
+    }
+
+    .testimonials-card-layer {
+      position: relative;
+      inset: auto;
+      display: grid;
+      gap: 1rem;
+      pointer-events: auto;
+    }
+
+    .testimonial-flight-card {
+      position: relative;
+      left: auto;
+      width: 100%;
+      transform: none !important;
+      will-change: auto;
+    }
+  }
+
+  @keyframes testimonials-marquee-loop {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+</style>
+
+<script>
+  const clamp = (value: number, min: number, max: number) =>
+    Math.min(Math.max(value, min), max)
+
+  const setupTestimonials = () => {
+    const section = document.querySelector<HTMLElement>(
+      "[data-testimonials-section]"
+    )
+    const sticky = document.querySelector<HTMLElement>(
+      "[data-testimonials-sticky]"
+    )
+    const cards = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-testimonial-card]")
+    )
+
+    if (!section || !sticky || cards.length === 0) {
+      return
+    }
+
+    if (section.dataset.testimonialsReady === "true") {
+      return
+    }
+
+    section.dataset.testimonialsReady = "true"
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    )
+
+    let frame = 0
+
+    const update = () => {
+      frame = 0
+
+      if (prefersReducedMotion.matches) {
+        return
+      }
+
+      const rect = section.getBoundingClientRect()
+      const stickyRect = sticky.getBoundingClientRect()
+      const stickyOffset = 90
+      const scrollRange = Math.max(1, rect.height - window.innerHeight)
+      const progress = clamp((stickyOffset - rect.top) / scrollRange, 0, 1)
+      const stageHeight = stickyRect.height
+      const laneSpan =
+        window.innerWidth < 700 ? 48 : Math.min(window.innerWidth, 1180)
+
+      cards.forEach((card) => {
+        const lane = Number(card.dataset.lane ?? 0)
+        const rotate = Number(card.dataset.rotate ?? 0)
+        const start = Number(card.dataset.start ?? 0)
+        const end = Number(card.dataset.end ?? 1)
+        const cardHeight = card.offsetHeight
+        const localProgress = clamp((progress - start) / (end - start), 0, 1)
+        const startY = -Math.max(cardHeight * 1.45, stageHeight * 0.52)
+        const endY = stageHeight + cardHeight * 1.2
+        const x = lane * laneSpan
+        const y = startY + (endY - startY) * localProgress
+
+        card.style.transform = `translate3d(calc(-50% + ${x.toFixed(
+          1
+        )}px), ${y.toFixed(1)}px, 0) rotate(${rotate}deg)`
+      })
+    }
+
+    const requestUpdate = () => {
+      if (frame === 0) {
+        frame = window.requestAnimationFrame(update)
+      }
+    }
+
+    update()
+    window.addEventListener("scroll", requestUpdate, { passive: true })
+    window.addEventListener("resize", requestUpdate)
+    prefersReducedMotion.addEventListener("change", requestUpdate)
+  }
+
+  setupTestimonials()
+  document.addEventListener("astro:page-load", setupTestimonials)
+</script>

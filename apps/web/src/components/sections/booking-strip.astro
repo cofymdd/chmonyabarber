@@ -1,5 +1,5 @@
 ---
-import { CameraIcon } from "lucide-react"
+import { MapPinIcon } from "lucide-react"
 
 import ReservationButton from "@/components/reservation-button.astro"
 import { bookingLinks } from "@/lib/infinity-content"
@@ -9,7 +9,8 @@ import { bookingLinks } from "@/lib/infinity-content"
   class="mx-auto grid w-full max-w-[1440px] gap-8 border-b px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-24"
 >
   <a
-    href={bookingLinks.instagram}
+    href={bookingLinks.contact}
+    aria-label="Prejsť na kontakt"
     class="hover:bg-muted focus-visible:ring-ring/30 flex h-fit items-center justify-between gap-5 rounded-md border p-5 transition-colors focus-visible:ring-3 focus-visible:outline-none"
   >
     <div class="flex min-w-0 flex-col gap-1">
@@ -21,7 +22,7 @@ import { bookingLinks } from "@/lib/infinity-content"
       </p>
       <p class="text-muted-foreground text-sm">PREŠOV, EPERIA</p>
     </div>
-    <CameraIcon className="size-5 shrink-0" />
+    <MapPinIcon className="size-5 shrink-0" />
   </a>
 
   <div class="flex flex-col gap-8">

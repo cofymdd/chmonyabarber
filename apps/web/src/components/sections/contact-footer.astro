@@ -1,16 +1,8 @@
 ---
-import { CameraIcon } from "lucide-react"
-
 import { CookieSettings } from "@/components/cookie-settings"
 import ResponsiveImage from "@/components/responsive-image.astro"
 import { RollingLink } from "@/components/rolling-link"
-import {
-  bookingLinks,
-  contact,
-  instagramImages,
-  socialLinks,
-} from "@/lib/infinity-content"
-import { buttonVariants } from "@workspace/ui/components/button"
+import { bookingLinks, contact, instagramImages } from "@/lib/infinity-content"
 import { Separator } from "@workspace/ui/components/separator"
 
 const footerNavItems = [
@@ -32,6 +24,7 @@ const railItems = [
 ]
 
 const marqueeItems = [...railItems, ...railItems, ...railItems, ...railItems]
+const contactHref = bookingLinks.contact
 const phoneDisplay = contact.phone.replace("+421 ", "0")
 ---
 
@@ -41,11 +34,9 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
 >
   <div class="pt-28 pb-20 sm:pt-32 sm:pb-20">
     <a
-      href={bookingLinks.instagram}
-      aria-label="Infinity Barber na Instagrame"
+      href={contactHref}
+      aria-label="Prejsť na kontakt"
       class="focus-visible:ring-ring/30 block focus-visible:ring-3 focus-visible:outline-none"
-      rel="noopener noreferrer"
-      target="_blank"
     >
       <div
         aria-hidden="true"
@@ -67,9 +58,9 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
     </a>
   </div>
 
-  <div class="mx-auto w-full max-w-[1480px] px-6 sm:px-8 lg:px-6">
+  <div class="mx-auto w-full max-w-[1480px] px-5 sm:px-8 lg:px-6">
     <div
-      class="grid gap-12 pb-4 text-sm leading-[17px] font-semibold md:grid-cols-[1fr_auto] md:items-start"
+      class="grid gap-12 pb-4 text-sm leading-[17px] font-semibold md:items-start"
     >
       <div class="flex flex-col gap-12">
         <div>
@@ -93,47 +84,71 @@ const phoneDisplay = contact.phone.replace("+421 ", "0")
           triggerLabel="Nastavenia cookies"
         />
       </div>
-
-      <div class="flex flex-col gap-0.5 md:items-end">
-        <p>Sociálne siete</p>
-        <nav aria-label="Sociálne siete" class="flex flex-wrap md:justify-end">
-          {
-            socialLinks.map((link, index) => (
-              <RollingLink
-                href={link.href}
-                rel="noopener noreferrer"
-                target="_blank"
-                text={`${link.label}${index < socialLinks.length - 1 ? ", " : ""}`}
-              />
-            ))
-          }
-        </nav>
-      </div>
     </div>
 
     <Separator className="bg-border/80" />
 
     <a
       href={bookingLinks.phone}
-      class="focus-visible:ring-ring/30 block py-8 text-[clamp(3.3rem,14vw,12.5rem)] leading-[0.9] font-semibold tracking-normal whitespace-nowrap focus-visible:ring-3 focus-visible:outline-none sm:py-10"
+      aria-label={phoneDisplay}
+      class="footer-phone-link focus-visible:ring-ring/30 block w-full overflow-hidden py-8 focus-visible:ring-3 focus-visible:outline-none sm:py-10"
     >
-      {phoneDisplay}
+      <svg
+        class="footer-phone-svg"
+        viewBox="0 0 1558 230"
+        aria-hidden="true"
+        focusable="false"
+        style="overflow: visible;"
+      >
+        <text
+          class="footer-phone-text"
+          x="5"
+          y="204"
+          fill="currentColor"
+          textLength="1548"
+          lengthAdjust="spacingAndGlyphs"
+        >
+          {phoneDisplay}
+        </text>
+      </svg>
     </a>
   </div>
-
-  <a
-    href={bookingLinks.instagram}
-    aria-label="Instagram"
-    class={`${buttonVariants({
-      size: "icon",
-      variant: "secondary",
-    })} fixed right-5 bottom-1/2 z-30 rounded-full shadow-xl`}
-    data-slot="button"
-    data-size="icon"
-    data-variant="secondary"
-    rel="noopener noreferrer"
-    target="_blank"
-  >
-    <CameraIcon />
-  </a>
 </footer>
+
+<style>
+  .footer-phone-link {
+    color: var(--foreground);
+  }
+
+  .footer-phone-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .footer-phone-text {
+    fill: currentColor;
+    font-family: var(--font-sans);
+    font-size: 255.9416px;
+    font-weight: 600;
+    font-feature-settings:
+      "ss01" 1,
+      "ss02" 1,
+      "ss07" 1,
+      "cv01" 1,
+      "cv09" 1,
+      "cv02" 1,
+      "cv03" 1,
+      "cv04" 1,
+      "cv12" 1,
+      "cv10" 1,
+      "cv08" 1,
+      "cv05" 1,
+      "cv07" 1,
+      "cv13" 1,
+      "cv06" 1;
+    font-variant-numeric: slashed-zero;
+    letter-spacing: 0;
+  }
+</style>

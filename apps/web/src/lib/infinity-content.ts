@@ -38,19 +38,8 @@ export const contact = {
 export const bookingLinks = {
   phone: `tel:${contact.phone.replace(/\s/g, "")}`,
   email: `mailto:${contact.email}`,
-  instagram: "https://www.instagram.com/infinity_barber_presov/",
+  contact: "#kontakt",
 }
-
-export const socialLinks = [
-  {
-    label: "Instagram",
-    href: bookingLinks.instagram,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/infinitybarberpresov",
-  },
-]
 
 export const serviceTags = ["Umytie", "Holenie", "Styling", "Strih"]
 

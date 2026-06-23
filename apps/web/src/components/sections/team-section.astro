@@ -1,54 +1,429 @@
 ---
 import ResponsiveImage from "@/components/responsive-image.astro"
-import SectionEyebrow from "@/components/section-eyebrow.astro"
 import { assets, barbers } from "@/lib/infinity-content"
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card"
+
+const wordLayers = ["Barberi.", "Majstri.", "Barberi."]
+const qualities = ["Skúsenosti", "Spoľahlivosť", "Profesionalita", "Priateľskí"]
 ---
 
-<section
-  class="mx-auto w-full max-w-[1440px] border-b px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
->
-  <div class="grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
-    <div class="flex flex-col gap-6">
-      <SectionEyebrow>INFINITY BARBER / Náš tím</SectionEyebrow>
-      <h2 class="text-5xl leading-none font-medium break-words sm:text-8xl">
-        Barberi.
-      </h2>
-      <ResponsiveImage
-        src={assets.team}
-        alt="Infinity Barber tím"
-        className="w-full rounded-md border object-cover grayscale"
-        sizes="(min-width: 1024px) 31vw, calc(100vw - 2.5rem)"
-      />
-      <div class="text-muted-foreground grid grid-cols-2 gap-2 text-sm">
-        <span>Skúsenosti</span>
-        <span>Spoľahlivosť</span>
-        <span>Profesionalita</span>
-        <span>Priateľskí</span>
-      </div>
-    </div>
+<section class="team-section" aria-labelledby="team-heading" data-team-section>
+  <div class="team-kicker" aria-hidden="true">
+    <p>INFINITY BARBER</p>
+    <p>(NÁŠ TÍM)</p>
+    <p>BARBERI, KTORÝM VERÍTE</p>
+  </div>
 
-    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+  <div class="team-showcase">
+    <h2 id="team-heading" class="sr-only">Barberi a majstri, ktorým veríte</h2>
+
+    <div class="team-word" aria-hidden="true">
       {
-        barbers.map((barber) => (
-          <Card className="rounded-md border bg-card" size="sm">
-            <CardHeader>
-              <CardTitle>{barber.name}</CardTitle>
-              <CardDescription>"{barber.quote}"</CardDescription>
-            </CardHeader>
-            <CardFooter className="justify-between border-t text-sm text-muted-foreground">
-              <span>{barber.role}</span>
-              <span>({barber.nick})</span>
-            </CardFooter>
-          </Card>
+        wordLayers.map((word, layerIndex) => (
+          <span class="team-word-layer">
+            {Array.from(word).map((letter, letterIndex) => (
+              <span class="team-letter-slot">
+                <span
+                  class="team-letter"
+                  style={`--layer-index: ${layerIndex}; --letter-index: ${letterIndex};`}
+                >
+                  {letter}
+                </span>
+              </span>
+            ))}
+          </span>
         ))
       }
     </div>
+
+    <ResponsiveImage
+      src={assets.team}
+      alt=""
+      className="team-line-art"
+      sizes="430px"
+    />
+
+    <ResponsiveImage
+      src={assets.barbers}
+      alt="Člen tímu Infinity Barber"
+      className="team-portrait grayscale"
+      sizes="136px"
+    />
+
+    <div class="team-qualities" aria-label="Naše kvality">
+      {qualities.map((quality) => <p>{quality}</p>)}
+    </div>
+  </div>
+
+  <div class="team-roster" role="list" aria-label="Tím Infinity Barber">
+    {
+      barbers.map((barber) => (
+        <article class="team-member" role="listitem">
+          <p class="team-member-name">{barber.name}</p>
+          <p class="team-member-quote">„{barber.quote}“</p>
+          <p class="team-member-role">{barber.role}</p>
+          <p class="team-member-nick">({barber.nick})</p>
+        </article>
+      ))
+    }
   </div>
 </section>
+
+<style>
+  .team-section {
+    --word-step: 0;
+
+    position: relative;
+    width: min(100%, 1440px);
+    margin-inline: auto;
+    padding: 9rem 0 8rem;
+    overflow: hidden;
+    background: var(--background);
+  }
+
+  .team-kicker {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem 0.8rem;
+    color: var(--muted-foreground);
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .team-kicker p:nth-child(2) {
+    text-align: center;
+  }
+
+  .team-kicker p:last-child {
+    text-align: right;
+  }
+
+  .team-showcase {
+    position: relative;
+    min-height: 21.5rem;
+    padding: 1.2rem 1.5rem 2.6rem;
+  }
+
+  .team-word {
+    position: absolute;
+    top: 3.5rem;
+    left: 1.5rem;
+    z-index: 2;
+    width: min(70%, 62.5rem);
+    height: 0.82em;
+    overflow: hidden;
+    color: var(--foreground);
+    font-size: clamp(7rem, 14vw, 13rem);
+    font-weight: 600;
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+  }
+
+  .team-word-layer {
+    position: absolute;
+    inset: 0 auto auto 0;
+    display: flex;
+  }
+
+  .team-letter-slot {
+    display: block;
+    overflow: hidden;
+  }
+
+  .team-letter {
+    display: block;
+    transform: translate3d(
+      0,
+      calc((var(--layer-index) - var(--word-step)) * 116%),
+      0
+    );
+    transition: transform 760ms cubic-bezier(0.76, 0, 0.24, 1);
+    transition-delay: calc(var(--letter-index) * 48ms);
+    will-change: transform;
+  }
+
+  .team-section[data-word-reset="true"] .team-letter {
+    transition: none;
+  }
+
+  :global(.team-line-art) {
+    position: absolute;
+    top: 4.1rem;
+    right: 7.2rem;
+    z-index: 0;
+    width: min(31vw, 26.875rem);
+    height: auto;
+    object-fit: contain;
+  }
+
+  :global(.team-portrait) {
+    position: absolute;
+    top: 3rem;
+    right: 1.5rem;
+    z-index: 1;
+    width: 8.5rem;
+    height: 12.375rem;
+    object-fit: cover;
+  }
+
+  .team-qualities {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: 1.5rem;
+    align-items: center;
+    background: var(--foreground);
+    color: var(--background);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .team-roster {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 5rem 1.5rem 0;
+  }
+
+  .team-member {
+    display: grid;
+    grid-template-columns:
+      minmax(10rem, 1.15fr) minmax(16rem, 0.95fr)
+      minmax(7rem, 0.7fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    min-height: 3.4rem;
+    border-top: 1px solid var(--border);
+    color: color-mix(in oklch, var(--foreground) 88%, transparent);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .team-member-name {
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  .team-member-quote,
+  .team-member-role,
+  .team-member-nick {
+    color: var(--muted-foreground);
+  }
+
+  .team-member-nick {
+    text-align: right;
+  }
+
+  @media (max-width: 900px) {
+    .team-section {
+      padding: 6rem 0;
+    }
+
+    .team-word {
+      width: 72%;
+      font-size: clamp(6rem, 15vw, 8.5rem);
+    }
+
+    :global(.team-line-art) {
+      right: 5rem;
+      width: min(42vw, 24rem);
+    }
+
+    :global(.team-portrait) {
+      width: 7rem;
+      height: 10rem;
+    }
+
+    .team-member {
+      grid-template-columns: 1fr 1.25fr auto;
+    }
+
+    .team-member-role {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .team-section {
+      padding: 4rem 0 5rem;
+    }
+
+    .team-kicker {
+      grid-template-columns: 1fr 1.5fr;
+      padding: 0 1.25rem 1rem;
+      font-size: 0.68rem;
+    }
+
+    .team-kicker p:nth-child(2) {
+      display: none;
+    }
+
+    .team-showcase {
+      min-height: 15.8rem;
+      padding-inline: 1.25rem;
+    }
+
+    .team-word {
+      top: 6rem;
+      left: 1.25rem;
+      width: calc(100% - 2.5rem);
+      font-size: clamp(4.7rem, 20vw, 6rem);
+      letter-spacing: -0.055em;
+    }
+
+    :global(.team-line-art) {
+      top: 3.4rem;
+      right: auto;
+      left: 0;
+      width: 100%;
+      max-width: none;
+    }
+
+    :global(.team-portrait) {
+      display: none;
+    }
+
+    .team-qualities {
+      right: auto;
+      left: -50%;
+      width: 200%;
+      min-height: 2rem;
+      font-size: 0.78rem;
+    }
+
+    .team-roster {
+      margin: 5rem 1.25rem 0;
+    }
+
+    .team-member {
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem 1rem;
+      min-height: auto;
+      padding: 1rem 0;
+    }
+
+    .team-member-name {
+      grid-column: 1 / -1;
+    }
+
+    .team-member-quote {
+      display: none;
+    }
+
+    .team-member-role {
+      display: block;
+    }
+
+    .team-member-nick {
+      grid-column: 2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .team-section {
+      --word-step: 1;
+    }
+
+    .team-letter {
+      transition: none;
+      will-change: auto;
+    }
+  }
+</style>
+
+<script>
+  const setupTeamWord = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-team-section]")
+      .forEach((section) => {
+        if (section.dataset.teamWordReady === "true") {
+          return
+        }
+
+        section.dataset.teamWordReady = "true"
+
+        const reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        )
+
+        let step = 0
+        let resetTimer = 0
+        let cycleTimer = 0
+
+        const applyStep = () => {
+          section.style.setProperty("--word-step", String(step))
+        }
+
+        const reset = () => {
+          section.dataset.wordReset = "true"
+          step = 0
+          applyStep()
+          section.offsetHeight
+          delete section.dataset.wordReset
+        }
+
+        const advance = () => {
+          step += 1
+          applyStep()
+
+          if (step === 2) {
+            window.clearTimeout(resetTimer)
+            resetTimer = window.setTimeout(reset, 1200)
+          }
+        }
+
+        const stop = () => {
+          window.clearInterval(cycleTimer)
+          window.clearTimeout(resetTimer)
+          cycleTimer = 0
+
+          if (step === 2) {
+            reset()
+          }
+        }
+
+        const start = () => {
+          if (reducedMotion.matches || cycleTimer !== 0) {
+            return
+          }
+
+          cycleTimer = window.setInterval(advance, 2500)
+        }
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry?.isIntersecting) {
+              start()
+            } else {
+              stop()
+            }
+          },
+          { rootMargin: "20% 0px" }
+        )
+
+        observer.observe(section)
+        reducedMotion.addEventListener("change", () => {
+          stop()
+          step = reducedMotion.matches ? 1 : 0
+          applyStep()
+
+          if (!reducedMotion.matches) {
+            start()
+          }
+        })
+      })
+  }
+
+  setupTeamWord()
+  document.addEventListener("astro:page-load", setupTeamWord)
+</script>
