@@ -42,13 +42,6 @@ const qualities = ["Skúsenosti", "Spoľahlivosť", "Profesionalita", "Priateľs
       sizes="430px"
     />
 
-    <ResponsiveImage
-      src={assets.barbers}
-      alt="Člen tímu CHMONYA BARBER"
-      className="team-portrait grayscale"
-      sizes="136px"
-    />
-
     <div class="team-qualities" aria-label="Naše kvality">
       {qualities.map((quality) => <p>{quality}</p>)}
     </div>
@@ -160,16 +153,6 @@ const qualities = ["Skúsenosti", "Spoľahlivosť", "Profesionalita", "Priateľs
     object-fit: contain;
   }
 
-  :global(.team-portrait) {
-    position: absolute;
-    top: 3rem;
-    right: 1.5rem;
-    z-index: 1;
-    width: 8.5rem;
-    height: 12.375rem;
-    object-fit: cover;
-  }
-
   .team-qualities {
     position: absolute;
     right: 0;
@@ -239,11 +222,6 @@ const qualities = ["Skúsenosti", "Spoľahlivosť", "Profesionalita", "Priateľs
       width: min(42vw, 24rem);
     }
 
-    :global(.team-portrait) {
-      width: 7rem;
-      height: 10rem;
-    }
-
     .team-member {
       grid-template-columns: 1fr 1.25fr auto;
     }
@@ -287,10 +265,6 @@ const qualities = ["Skúsenosti", "Spoľahlivosť", "Profesionalita", "Priateľs
       left: 0;
       width: 100%;
       max-width: none;
-    }
-
-    :global(.team-portrait) {
-      display: none;
     }
 
     .team-qualities {
